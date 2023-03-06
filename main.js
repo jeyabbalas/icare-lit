@@ -9,7 +9,7 @@ icareLitApp.innerHTML = `
   <div id="header" class="mx-auto max-w-7xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8 bg-slate-900 rounded-b-lg">
     <div class="flex items-center justify-between">
       <div class="flex justify-start gap-2">
-        <div class="grid place-content-center">
+        <div class="flex items-center">
           <img src="${roseIcon}" class="h-12 w-12 sm:h-16 sm:w-16 gap-2 logo vanilla" alt="rose logo" />
         </div>
         <div class="min-w-0 flex-1">
@@ -59,9 +59,16 @@ icareLitApp.innerHTML = `
           
           <div class="space-y-6 sm:space-y-5">
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-               <label for="name" class="block text-sm font-normal text-gray-700 sm:mt-px sm:pt-2">Please enter a name or an alias:</label>
+               <label for="name" class="block text-sm font-normal text-gray-700 sm:mt-px sm:pt-2">Please enter a name or an alias.</label>
                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                 <input type="text" name="name" id="name" autocomplete="name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" value="Jane Doe">
+                 <input type="text" name="name" id="name" autocomplete="name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" value="Jane Doe" required>
+               </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+               <label for="age" class="block text-sm font-normal text-gray-700 sm:mt-px sm:pt-2">What is your age?</label>
+               <div class="mt-1 sm:col-span-2 sm:mt-0">
+                 <input type="number" name="age" id="age" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
                </div>
             </div>
           </div>
