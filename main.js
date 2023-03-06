@@ -27,16 +27,17 @@ icareLitApp.innerHTML = `
   </div>
   
   <div id="info" class="mx-auto max-w-7xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
-    <div class="flex p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50" role="alert">
+    <div id="info-privacy" class="flex p-4 mb-2 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50" role="alert">
       <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
       </svg>
       <span class="sr-only">Data privacy notice</span>
       <div>
-        <span class="font-medium">Privacy notice</span>: All data is maintained and calculations are performed within your browser. No data is sent to or calculations are performed by any server. The app code is open source and can be inspected by anyone. To view the source code, click on the GitHub logo on the top-right of this page.
+        <span class="font-medium">Privacy notice</span>: All data is maintained and calculations are performed within your browser. No data is sent to or calculations are performed by any server. The app code is open source and can be inspected by anyone. To view the source code, <a class="font-bold underline" href="https://github.com/jeyabbalas/icare-lit">click here</a>.
       </div>
     </div>
-    <div class="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50" role="alert">
+    
+    <div id="info-usage" class="flex p-4 mb-2 sm:mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50" role="alert">
       <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
       </svg>
