@@ -58,19 +58,87 @@ icareLitApp.innerHTML = `
           </div>
           
           <div class="space-y-6 sm:space-y-5">
+          
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-               <label for="name" class="block text-sm font-normal text-gray-700 sm:mt-px sm:pt-2">Please enter a name or an alias.</label>
-               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                 <input type="text" name="name" id="name" autocomplete="name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" value="Jane Doe" required>
-               </div>
+              <label for="name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please enter a name or an alias.</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="text" name="name" id="name" autocomplete="name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" value="Jane Doe" required>
+              </div>
             </div>
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-               <label for="age" class="block text-sm font-normal text-gray-700 sm:mt-px sm:pt-2">What is your age?</label>
-               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                 <input type="number" name="age" id="age" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
-               </div>
+              <label for="age" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">What is your age?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="age" id="age" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
+              </div>
             </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="sex" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please specify your sex assigned at birth</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Sex</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="female" name="sex" type="radio" value="female" checked class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="female" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Female</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="male" name="sex" type="radio" value="male" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="male" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Male</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="race-ethnicity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Which race/ethnicity group do you most closely associate with?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <select id="race-ethnicity" name="race-ethnicity" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
+                  <option disabled selected value> -- select an option -- </option>
+                  <option>American Indian or Alaska Native</option>
+                  <option>Asian</option>
+                  <option>Black or African American</option>
+                  <option>Hispanic</option>
+                  <option>Native Hawaiian or Other Pacific Islander</option>
+                  <option>Non-Hispanic White</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <div>
+                <label for="weight" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How much do you weigh without your clothes or shoes on?</label>
+                <span class="text-sm text-gray-500" id="availability-description">If you are pregnant, how much did you weigh before your pregnancy?</span>
+              </div>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="weight" id="weight" min="0" max="500" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                  <span class="text-gray-500 sm:text-sm" id="weight-lbs">lbs.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How tall are you with your shoes off?</label>
+                <span class="text-sm text-gray-500" id="availability-description">Height in feet and inches. For example, if you are 5 feet 7 inches enter 5 in the feet box and 7 in the inches box.</span>
+              </div>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="height-feet" min="2" max="8" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                <input type="number" name="height-inches" min="0" max="11" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="menarche" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your first menstrual period?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="menarche" id="menarche" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
