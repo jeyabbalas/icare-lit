@@ -33,7 +33,7 @@ icareLitApp.innerHTML = `
       </svg>
       <span class="sr-only">Data privacy notice</span>
       <div>
-        <span class="font-medium">Privacy notice</span>: All data is maintained and all calculations are performed within your browser. No data is sent to and no calculations are performed by any server. The app code is open source and can be inspected by anyone. To view the source code, <a class="font-bold underline" href="https://github.com/jeyabbalas/icare-lit">click here</a>.
+        <span class="font-medium">Privacy notice</span>: All data is maintained and all calculations are performed within your browser. No data is sent to and no calculations are performed by any server. <a class="font-bold underline" href="https://github.com/jeyabbalas/icare-lit">This app's code</a> is open source and can be inspected by anyone.
       </div>
     </div>
     
@@ -135,13 +135,13 @@ icareLitApp.innerHTML = `
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <div class="space-y-2">
                   <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <label for="height-feet" class="sr-only">Height in feet</label>
+                    <label for="height-feet" class="sr-only">Feet portion of the height</label>
                     <input type="number" name="height-feet" min="2" max="8" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="height-feet">
                     <span id="height-feet" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-5 text-gray-500 sm:text-sm">feet</span>
                   </div>
                   <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <label for="height-inches" class="sr-only">Height in inches</label>
-                    <input type="number" name="height-inches" min="2" max="8" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="height-inches">
+                    <label for="height-inches" class="sr-only">Inches portion of the height</label>
+                    <input type="number" name="height-inches" min="0" max="11" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="height-inches">
                     <span id="height-inches" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">inches</span>
                   </div>
                 </div>
