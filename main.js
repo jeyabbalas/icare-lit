@@ -80,7 +80,7 @@ icareLitApp.innerHTML = `
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <fieldset class="mt-4">
-                  <legend class="sr-only">Sex</legend>
+                  <legend class="sr-only">Sex type</legend>
                   <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                     <div class="flex items-center">
                       <input id="female" name="sex" type="radio" value="female" checked class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -129,8 +129,8 @@ icareLitApp.innerHTML = `
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
-                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How tall are you with your shoes off?</label>
-                <p class="text-sm text-gray-500">Height in feet and inches. For example, if you are 5 feet 7 inches enter 5 in the feet box and 7 in the inches box.</p>
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How tall (in feet and inches) are you with your shoes off?</label>
+                <p class="text-sm text-gray-500">For example, if you are 5 feet 7 inches enter 5 in the feet box and 7 in the inches box.</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <div class="space-y-2">
@@ -152,6 +152,276 @@ icareLitApp.innerHTML = `
               <label for="menarche" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your first menstrual period?</label>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <input type="number" name="menarche" id="menarche" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have your periods completely stopped?</label>
+                <p class="text-sm text-gray-500">By <em>completely stopped</em>, we mean, have you gone at least 6 months without having a period, and you are not pregnant or using any form of hormonal contraception.</p>
+              </div>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Periods status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="periods-stopped-yes" name="periods-stopped" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="periods-stopped-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="periods-stopped-no" name="periods-stopped" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="periods-stopped-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="periods-stopped-unknown" name="periods-stopped" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="periods-stopped-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="menopause" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your last menstrual period?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="menopause" id="menopause" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever had any children?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Had children status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="had-children-yes" name="had-children" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="had-children-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="had-children-no" name="had-children" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="had-children-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="had-children-unknown" name="had-children" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="had-children-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever used menopausal hormone treatment prescribed by a doctor or other health professional?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Menopausal hormone treatment use status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-yes" name="hormone-treatment" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-no" name="hormone-treatment" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-unknown" name="hormone-treatment" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Do you use menopausal hormone treatment currently?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Current menopausal hormone treatment use status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-current-yes" name="hormone-treatment-current" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-current-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-current-no" name="hormone-treatment-current" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-current-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-current-unknown" name="hormone-treatment-current" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-current-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">What type of menopausal hormone treatment do you currently use?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Menopausal hormone treatment type</legend>
+                  <div class="space-y-4">
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-type-e" name="hormone-treatment-type" type="radio" value="e" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-type-e" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Estrogen prescription hormone only.</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-type-c" name="hormone-treatment-type" type="radio" value="c" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-type-c" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Combined estrogen plus progestin prescription hormones.</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormone-treatment-type-unknown" name="hormone-treatment-type" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormone-treatment-type-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever used any hormonal contraceptive medication or device?</label>
+                <p class="text-sm text-gray-500">This includes combined oral contraceptive pills containing both estrogen and progesterone/progestin (commonly called <em>the pill</em>), progesterone-only or progestin-only contraceptive pills (commonly called the <em>mini-pill</em>), <em>Norplant</em> (inserted under the skin of your upper arm, lasts several years), <em>Depo-provera</em> (birth control shot given once every three months), Vaginal ring (such as <em>Nuva Ring</em>, inserted vaginally each month), Birth control patch (such as <em>Ortho Evra</em>, applied to the skin), Hormonal IUD (such as <em>Mirena intrauterine device</em>), or other hormones prescribed by a health professional.|</p>
+              </div>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Hormonal contraceptive use status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="hormonal-contraceptive-yes" name="hormonal-contraceptive" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormonal-contraceptive-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormonal-contraceptive-no" name="hormonal-contraceptive" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormonal-contraceptive-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormonal-contraceptive-unknown" name="hormonal-contraceptive" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormonal-contraceptive-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Do you use any hormonal contraceptive medication or device currently?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Current hormonal contraceptive use status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="hormonal-contraceptive-current-yes" name="hormonal-contraceptive-current" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormonal-contraceptive-current-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormonal-contraceptive-current-no" name="hormonal-contraceptive-current" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormonal-contraceptive-current-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="hormonal-contraceptive-current-unknown" name="hormonal-contraceptive-current" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="hormonal-contraceptive-current-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">During your entire life, have you had at least 12 drinks of any kind of alcoholic beverage?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Alcohol use status</legend>
+                  <div class="space-y-4">
+                    <div class="flex items-center">
+                      <input id="alcohol-use-never" name="alcohol-use" type="radio" value="never" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-use-never" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No.</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="alcohol-use-former" name="alcohol-use" type="radio" value="former" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-use-former" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes, but I no longer drink alcohol. (former drinker)</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="alcohol-use-current" name="alcohol-use" type="radio" value="current" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-use-current" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes, I still drink alcohol. (current drinker)</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="alcohol-use-unknown" name="alcohol-use" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-use-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever smoked?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Smoking status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="smoking-yes" name="smoking" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="smoking-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="smoking-no" name="smoking" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="smoking-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="smoking-unknown" name="smoking" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="smoking-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Has a doctor or other health professional ever told you that you have or had fibrocystic breast or benign breast disease?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">History of benign breast disease status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="benign-breast-disease-yes" name="benign-breast-disease" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="benign-breast-disease-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="benign-breast-disease-no" name="benign-breast-disease" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="benign-breast-disease-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="benign-breast-disease-unknown" name="benign-breast-disease" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="benign-breast-disease-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Has your biological mother, father, sister, or brother ever been diagnosed with breast cancer?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Family history of breast cancer status</legend>
+                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    <div class="flex items-center">
+                      <input id="family-history-yes" name="family-history" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="family-history-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="family-history-no" name="family-history" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="family-history-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="family-history-unknown" name="family-history" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="family-history-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                    </div>
+                  </div>
+                </fieldset>
               </div>
             </div>
             
