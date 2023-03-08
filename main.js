@@ -158,23 +158,23 @@ icareLitApp.innerHTML = `
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
                 <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have your periods completely stopped?</label>
-                <p class="text-sm text-gray-500">By <em>completely stopped</em>, we mean, have you gone at least 6 months without having a period, and you are not pregnant or using any form of hormonal contraception.</p>
+                <p class="text-sm text-gray-500">By <em>completely stopped</em>, we mean that you have gone at least 6 months without having a period, and you are not pregnant or using any form of hormonal contraception.</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <fieldset class="mt-4">
-                  <legend class="sr-only">Periods status</legend>
+                  <legend class="sr-only">Menopause status</legend>
                   <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                     <div class="flex items-center">
-                      <input id="periods-stopped-yes" name="periods-stopped" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="periods-stopped-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                      <input id="menopause-yes" name="menopause" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="menopause-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
                     </div>
                     <div class="flex items-center">
-                      <input id="periods-stopped-no" name="periods-stopped" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="periods-stopped-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                      <input id="menopause-no" name="menopause" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="menopause-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
                     </div>
                     <div class="flex items-center">
-                      <input id="periods-stopped-unknown" name="periods-stopped" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="periods-stopped-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                      <input id="menopause-unknown" name="menopause" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="menopause-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
                     </div>
                   </div>
                 </fieldset>
@@ -182,9 +182,19 @@ icareLitApp.innerHTML = `
             </div>
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label for="menopause" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your last menstrual period?</label>
+              <label for="age-menopause" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your last menstrual period?</label>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="number" name="menopause" id="menopause" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                <input type="number" name="age-menopause" id="age-menopause" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <div>
+                <label for="num-pregnancies" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How many times have you been pregnant?</label>
+                <p class="text-sm text-gray-500">Please include all live births, as well as pregnancies that ended as stillbirths, miscarriages, ectopic or tubal pregnancies, or termination. Twins, triplets, or higher multiples count as one pregnancy.</p>
+              </div>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="num-pregnancies" id="num-pregnancies" min="0" max="25" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
               </div>
             </div>
             
@@ -195,19 +205,33 @@ icareLitApp.innerHTML = `
                   <legend class="sr-only">Had children status</legend>
                   <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                     <div class="flex items-center">
-                      <input id="had-children-yes" name="had-children" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="had-children-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                      <input id="parous-yes" name="parous" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="parous-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
                     </div>
                     <div class="flex items-center">
-                      <input id="had-children-no" name="had-children" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="had-children-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                      <input id="parous-no" name="parous" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="parous-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
                     </div>
                     <div class="flex items-center">
-                      <input id="had-children-unknown" name="had-children" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="had-children-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                      <input id="parous-unknown" name="parous" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="parous-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
                     </div>
                   </div>
                 </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="parity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How many children have you had?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="parity" id="parity" min="0" max="25" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="age-first-child-birth" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your first child?</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <input type="number" name="age-first-child-birth" id="age-first-child-birth" min="0" max="100" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
               </div>
             </div>
             
@@ -283,7 +307,7 @@ icareLitApp.innerHTML = `
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
                 <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever used any hormonal contraceptive medication or device?</label>
-                <p class="text-sm text-gray-500">This includes combined oral contraceptive pills containing both estrogen and progesterone/progestin (commonly called <em>the pill</em>), progesterone-only or progestin-only contraceptive pills (commonly called the <em>mini-pill</em>), <em>Norplant</em> (inserted under the skin of your upper arm, lasts several years), <em>Depo-provera</em> (birth control shot given once every three months), Vaginal ring (such as <em>Nuva Ring</em>, inserted vaginally each month), Birth control patch (such as <em>Ortho Evra</em>, applied to the skin), Hormonal IUD (such as <em>Mirena intrauterine device</em>), or other hormones prescribed by a health professional.|</p>
+                <p class="text-sm text-gray-500">This includes combined oral contraceptive pills containing both estrogen and progesterone/progestin (commonly called <em>the pill</em>), progesterone-only or progestin-only contraceptive pills (commonly called the <em>mini-pill</em>), <em>Norplant</em> (inserted under the skin of your upper arm, lasts several years), <em>Depo-provera</em> (birth control shot given once every three months), Vaginal ring (such as <em>Nuva Ring</em>, inserted vaginally each month), Birth control patch (such as <em>Ortho Evra</em>, applied to the skin), Hormonal IUD (such as <em>Mirena intrauterine device</em>), or other hormones prescribed by a health professional.</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <fieldset class="mt-4">
@@ -350,6 +374,46 @@ icareLitApp.innerHTML = `
                     <div class="flex items-center">
                       <input id="alcohol-use-unknown" name="alcohol-use" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
                       <label for="alcohol-use-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please select any of the following alcoholic beverages that you have had in the past 12 months.</label>
+              <div class="mt-1 sm:col-span-2 sm:mt-0">
+                <fieldset class="mt-4">
+                  <legend class="sr-only">Alcohol types</legend>
+                  <div class="space-y-5">
+                    <div class="flex h-6 items-center">
+                      <input id="alcohol-type-wine" name="alcohol-type" type="checkbox" value="wine" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-type-wine" class="ml-3 text-sm font-medium leading-6 text-gray-900">Glass of wine</label>
+                    </div>
+                    <div class="flex h-6 items-center">
+                      <input id="alcohol-type-blc" name="alcohol-type" type="checkbox" value="blc" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-type-blc" class="ml-3 text-sm font-medium leading-6 text-gray-900">Glass of beer/lager/cider</label>
+                    </div>
+                    <div class="flex h-6 items-center">
+                      <input id="alcohol-type-beer" name="alcohol-type" type="checkbox" value="beer" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-type-beer" class="ml-3 text-sm font-medium leading-6 text-gray-900">Bottle of beer</label>
+                    </div>
+                    <div class="relative flex items-start">
+                      <div class="flex h-6 items-center">
+                        <input id="alcohol-type-pop" aria-describedby="pop-description" name="alcohol-type" type="checkbox" value="pop" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                      </div>
+                      <div class="ml-3">
+                        <label for="alcohol-type-pop" class="text-sm font-medium leading-6 text-gray-900">Alcoholic pop beverages</label>
+                        <p id="pop-description" class="text-sm text-gray-500">Such as wine coolers, hard soda, spiked seltzer (sparkling water), Smirnoff Ice, malt liquor, or pre-mixed cocktails.</p>
+                      </div>
+                    </div>
+                    <div class="flex h-6 items-center">
+                      <input id="alcohol-type-shots" name="alcohol-type" type="checkbox" value="shots" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-type-shots" class="ml-3 text-sm font-medium leading-6 text-gray-900">Shots of liquor</label>
+                    </div>
+                    <div class="flex h-6 items-center">
+                      <input id="alcohol-type-unknown" name="alcohol-type" type="checkbox" value="" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                      <label for="alcohol-type-unknown" class="ml-3 text-sm font-medium leading-6 text-gray-900">Don't know</label>
                     </div>
                   </div>
                 </fieldset>
