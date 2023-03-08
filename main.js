@@ -49,20 +49,20 @@ icareLitApp.innerHTML = `
   </div>
   
   <div id="form" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 border rounded-lg">
-    <form id="form-icare-lit" class="space-y-8 divide-y divide-gray-200">
+    <form id="form-icare-lit" autocomplete="off" class="space-y-8 divide-y divide-gray-200">
       <div id="form-questionnaire" class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div class="space-y-6 sm:space-y-5 pt-2 sm:pt-4">
-          <div>
+          <div id="questionnaire-heading">
             <h3 class="text-lg leading-6 font-semibold text-gray-900">Questionnaire</h3>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">Please answer the following questions to the best of your knowledge.</p>
           </div>
           
-          <div class="space-y-6 sm:space-y-5">
+          <div id="questions" class="space-y-6 sm:space-y-5">
           
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label for="name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please enter a name or an alias.</label>
+              <label for="name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Enter a name or an alias.</label>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="text" name="name" id="name" autocomplete="name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" value="Jane Doe" required>
+                <input type="text" name="name" id="name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" value="Jane Doe" required>
               </div>
             </div>
             
@@ -74,7 +74,10 @@ icareLitApp.innerHTML = `
             </div>
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label for="sex" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please specify your sex assigned at birth</label>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please specify your sex assigned at birth</label>
+                <p class="text-sm text-gray-500"><span class="font-medium">Note</span>: The current version of this tool is developed for <em>females</em> only.</p>
+              </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <fieldset class="mt-4">
                   <legend class="sr-only">Sex</legend>
@@ -84,8 +87,8 @@ icareLitApp.innerHTML = `
                       <label for="female" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Female</label>
                     </div>
                     <div class="flex items-center">
-                      <input id="male" name="sex" type="radio" value="male" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="male" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Male</label>
+                      <input id="male" name="sex" type="radio" value="male" class="h-4 w-4 border-gray-300 bg-gray-100 text-slate-600 focus:ring-slate-600" disabled>
+                      <label for="male" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Male <span class="font-normal text-gray-500">(option currently unavailable)</span></label>
                     </div>
                   </div>
                 </fieldset>
@@ -93,30 +96,33 @@ icareLitApp.innerHTML = `
             </div>
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label for="race-ethnicity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Which race/ethnicity group do you most closely associate with?</label>
+              <div>
+                <label for="race-ethnicity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Which race/ethnicity group do you most closely associate with?</label>
+                <p class="text-sm text-gray-500"><span class="font-medium">Note</span>: The current version of the model is developed for <em>non-hispanic white</em> populations only. Future versions will be developed for other populations.</p>
+              </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <select id="race-ethnicity" name="race-ethnicity" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
                   <option disabled selected value> -- select an option -- </option>
-                  <option>American Indian or Alaska Native</option>
-                  <option>Asian</option>
-                  <option>Black or African American</option>
-                  <option>Hispanic</option>
-                  <option>Native Hawaiian or Other Pacific Islander</option>
+                  <option disabled>American Indian or Alaska Native</option>
+                  <option disabled>Asian</option>
+                  <option disabled>Black or African American</option>
+                  <option disabled>Hispanic</option>
+                  <option disabled>Native Hawaiian or Other Pacific Islander</option>
                   <option>Non-Hispanic White</option>
-                  <option>Other</option>
+                  <option disabled>Other</option>
                 </select>
               </div>
             </div>
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
-                <label for="weight" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How much do you weigh without your clothes or shoes on?</label>
-                <span class="text-sm text-gray-500" id="availability-description">If you are pregnant, how much did you weigh before your pregnancy?</span>
+                <label for="weight" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How much do you weigh (in pounds) without your clothes or shoes on?</label>
+                <p class="text-sm text-gray-500">If you are pregnant, how much did you weigh before your pregnancy?</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="number" name="weight" id="weight" min="0" max="500" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                  <span class="text-gray-500 sm:text-sm" id="weight-lbs">lbs.</span>
+                <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                  <input type="number" name="weight" id="weight" min="0" max="500" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="weight-units">
+                  <span id="weight-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:max-w-xs sm:text-sm">lbs.</span>
                 </div>
               </div>
             </div>
@@ -124,7 +130,7 @@ icareLitApp.innerHTML = `
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
                 <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How tall are you with your shoes off?</label>
-                <span class="text-sm text-gray-500" id="availability-description">Height in feet and inches. For example, if you are 5 feet 7 inches enter 5 in the feet box and 7 in the inches box.</span>
+                <p class="text-sm text-gray-500">Height in feet and inches. For example, if you are 5 feet 7 inches enter 5 in the feet box and 7 in the inches box.</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <input type="number" name="height-feet" min="2" max="8" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
@@ -174,5 +180,4 @@ icareLitApp.addEventListener('submit', (event) => {
   // const name = formData.get('name');
   const data = Object.fromEntries(formData.entries());
   console.log(data);
-  console.log(data.name);
 });
