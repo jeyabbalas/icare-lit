@@ -122,7 +122,7 @@ icareLitApp.innerHTML = `
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
                   <input type="number" name="weight" id="weight" min="0" max="500" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="weight-units">
-                  <span id="weight-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:max-w-xs sm:text-sm">lbs.</span>
+                  <span id="weight-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">lbs.</span>
                 </div>
               </div>
             </div>
@@ -133,8 +133,18 @@ icareLitApp.innerHTML = `
                 <p class="text-sm text-gray-500">Height in feet and inches. For example, if you are 5 feet 7 inches enter 5 in the feet box and 7 in the inches box.</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="number" name="height-feet" min="2" max="8" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
-                <input type="number" name="height-inches" min="0" max="11" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                <div class="space-y-2">
+                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                    <label for="height-feet" class="sr-only">Height in feet</label>
+                    <input type="number" name="height-feet" min="2" max="8" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="height-feet">
+                    <span id="height-feet" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-5 text-gray-500 sm:text-sm">feet</span>
+                  </div>
+                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                    <label for="height-inches" class="sr-only">Height in inches</label>
+                    <input type="number" name="height-inches" min="2" max="8" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="height-inches">
+                    <span id="height-inches" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">inches</span>
+                  </div>
+                </div>
               </div>
             </div>
             
