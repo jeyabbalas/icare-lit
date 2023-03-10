@@ -208,7 +208,7 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div id="parous-container" class="">
+            <div id="children-container">
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever had any children?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -233,17 +233,19 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label for="parity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How many children have you had?</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="number" name="parity" id="parity" min="0" max="25" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+            <div id="births-container" class="hidden space-y-6 sm:space-y-5">
+              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label for="parity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How many children have you had?</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                  <input type="number" name="parity" id="parity" min="0" max="25" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                </div>
               </div>
-            </div>
-            
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label for="age-first-child-birth" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your first child?</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="number" name="age-first-child-birth" id="age-first-child-birth" min="${minAge}" max="${maxAge}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+              
+              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label for="age-first-child-birth" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your first child?</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                  <input type="number" name="age-first-child-birth" id="age-first-child-birth" min="${minAge}" max="${maxAge}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                </div>
               </div>
             </div>
             
@@ -342,26 +344,28 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Do you currently use any hormonal contraceptive medication or device?</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <fieldset class="mt-4">
-                  <legend class="sr-only">Current hormonal contraceptive use status</legend>
-                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                    <div class="flex items-center">
-                      <input id="hormonal-contraceptive-current-yes" name="hormonal-contraceptive-current" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormonal-contraceptive-current-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+            <div id="hormonal-contraceptive-container" class="hidden">
+              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Do you currently use any hormonal contraceptive medication or device?</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Current hormonal contraceptive use status</legend>
+                    <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                      <div class="flex items-center">
+                        <input id="hormonal-contraceptive-current-yes" name="hormonal-contraceptive-current" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormonal-contraceptive-current-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="hormonal-contraceptive-current-no" name="hormonal-contraceptive-current" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormonal-contraceptive-current-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="hormonal-contraceptive-current-unknown" name="hormonal-contraceptive-current" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormonal-contraceptive-current-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                      </div>
                     </div>
-                    <div class="flex items-center">
-                      <input id="hormonal-contraceptive-current-no" name="hormonal-contraceptive-current" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormonal-contraceptive-current-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
-                    </div>
-                    <div class="flex items-center">
-                      <input id="hormonal-contraceptive-current-unknown" name="hormonal-contraceptive-current" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormonal-contraceptive-current-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
-                    </div>
-                  </div>
-                </fieldset>
+                  </fieldset>
+                </div>
               </div>
             </div>
             
@@ -392,337 +396,339 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please select any of the following alcoholic beverages that you have had in the past 12 months.</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <fieldset class="mt-4">
-                  <legend class="sr-only">Alcohol types</legend>
-                  <div class="space-y-5">
-                    <div class="flex h-6 items-center">
-                      <input id="alcohol-type-wine" name="alcohol-type" type="checkbox" value="wine" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="alcohol-type-wine" class="ml-3 text-sm font-medium leading-6 text-gray-900">Glass of wine</label>
-                    </div>
-                    <div class="flex h-6 items-center">
-                      <input id="alcohol-type-blc" name="alcohol-type" type="checkbox" value="blc" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="alcohol-type-blc" class="ml-3 text-sm font-medium leading-6 text-gray-900">Glass of beer/lager/cider</label>
-                    </div>
-                    <div class="flex h-6 items-center">
-                      <input id="alcohol-type-beer" name="alcohol-type" type="checkbox" value="beer" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="alcohol-type-beer" class="ml-3 text-sm font-medium leading-6 text-gray-900">Bottle of beer</label>
-                    </div>
-                    <div class="relative flex items-start">
+            <div id="alcohol-container" class="hidden space-y-6 sm:space-y-5">
+              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please select any of the following alcoholic beverages that you have had in the past 12 months.</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Alcohol types</legend>
+                    <div class="space-y-5">
                       <div class="flex h-6 items-center">
-                        <input id="alcohol-type-pop" aria-describedby="pop-description" name="alcohol-type" type="checkbox" value="pop" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <input id="alcohol-type-wine" name="alcohol-type" type="checkbox" value="wine" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="alcohol-type-wine" class="ml-3 text-sm font-medium leading-6 text-gray-900">Glass of wine</label>
                       </div>
-                      <div class="ml-3">
-                        <label for="alcohol-type-pop" class="text-sm font-medium leading-6 text-gray-900">Alcoholic pop beverages</label>
-                        <p id="pop-description" class="text-sm text-gray-500">Such as wine coolers, hard soda, spiked seltzer (sparkling water), Smirnoff Ice, malt liquor, or pre-mixed cocktails.</p>
+                      <div class="flex h-6 items-center">
+                        <input id="alcohol-type-blc" name="alcohol-type" type="checkbox" value="blc" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="alcohol-type-blc" class="ml-3 text-sm font-medium leading-6 text-gray-900">Glass of beer/lager/cider</label>
                       </div>
-                    </div>
-                    <div class="flex h-6 items-center">
-                      <input id="alcohol-type-shots" name="alcohol-type" type="checkbox" value="shots" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="alcohol-type-shots" class="ml-3 text-sm font-medium leading-6 text-gray-900">Shots of liquor</label>
-                    </div>
-                    <div class="flex h-6 items-center">
-                      <input id="alcohol-type-unknown" name="alcohol-type" type="checkbox" value="" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="alcohol-type-unknown" class="ml-3 text-sm font-medium leading-6 text-gray-900">Don't know</label>
-                    </div>
-                  </div>
-                </fieldset>
-              </div>
-            </div>
-            
-            <div id="wine-container" class="hidden">
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink wine?</label>
-                  <p class="text-sm text-gray-500">This includes any kind of wine or wine cooler.</p>
-                </div>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <fieldset class="mt-4">
-                    <legend class="sr-only">Wine consumption frequencies</legend>
-                    <div class="space-y-4">
-                      <div class="flex items-center">
-                        <input id="wine-freq-lt-one-month" name="wine-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
+                      <div class="flex h-6 items-center">
+                        <input id="alcohol-type-beer" name="alcohol-type" type="checkbox" value="beer" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="alcohol-type-beer" class="ml-3 text-sm font-medium leading-6 text-gray-900">Bottle of beer</label>
                       </div>
-                      <div class="flex items-center">
-                        <input id="wine-freq-lt-once-per-month" name="wine-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                      <div class="relative flex items-start">
+                        <div class="flex h-6 items-center">
+                          <input id="alcohol-type-pop" aria-describedby="pop-description" name="alcohol-type" type="checkbox" value="pop" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                        </div>
+                        <div class="ml-3">
+                          <label for="alcohol-type-pop" class="text-sm font-medium leading-6 text-gray-900">Alcoholic pop beverages</label>
+                          <p id="pop-description" class="text-sm text-gray-500">Such as wine coolers, hard soda, spiked seltzer (sparkling water), Smirnoff Ice, malt liquor, or pre-mixed cocktails.</p>
+                        </div>
                       </div>
-                      <div class="flex items-center">
-                        <input id="wine-freq-2-3-per-month" name="wine-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
+                      <div class="flex h-6 items-center">
+                        <input id="alcohol-type-shots" name="alcohol-type" type="checkbox" value="shots" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="alcohol-type-shots" class="ml-3 text-sm font-medium leading-6 text-gray-900">Shots of liquor</label>
                       </div>
-                      <div class="flex items-center">
-                        <input id="wine-freq-1-2-per-week" name="wine-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="wine-freq-3-4-per-week" name="wine-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="wine-freq-5-6-per-week" name="wine-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="wine-freq-daily" name="wine-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="wine-freq-unknown" name="wine-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="wine-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                      <div class="flex h-6 items-center">
+                        <input id="alcohol-type-unknown" name="alcohol-type" type="checkbox" value="" class="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="alcohol-type-unknown" class="ml-3 text-sm font-medium leading-6 text-gray-900">Don't know</label>
                       </div>
                     </div>
                   </fieldset>
                 </div>
               </div>
               
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <div>
-                  <label for="wine-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank wine, how many servings did you drink per day?</label>
-                  <p class="text-sm text-gray-500">A serving of wine is 5 ounces.</p>
+              <div id="wine-container" class="hidden space-y-6 sm:space-y-5">
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink wine?</label>
+                    <p class="text-sm text-gray-500">This includes any kind of wine or wine cooler.</p>
+                  </div>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <fieldset class="mt-4">
+                      <legend class="sr-only">Wine consumption frequencies</legend>
+                      <div class="space-y-4">
+                        <div class="flex items-center">
+                          <input id="wine-freq-lt-one-month" name="wine-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="wine-freq-lt-once-per-month" name="wine-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="wine-freq-2-3-per-month" name="wine-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="wine-freq-1-2-per-week" name="wine-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="wine-freq-3-4-per-week" name="wine-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="wine-freq-5-6-per-week" name="wine-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="wine-freq-daily" name="wine-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="wine-freq-unknown" name="wine-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
                 </div>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <input type="number" name="wine-serving" id="wine-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="wine-serving-units">
-                    <span id="wine-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">glass(es)</span>
+                
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <div>
+                    <label for="wine-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank wine, how many servings did you drink per day?</label>
+                    <p class="text-sm text-gray-500">A serving of wine is 5 ounces.</p>
+                  </div>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <input type="number" name="wine-serving" id="wine-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="wine-serving-units">
+                      <span id="wine-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">glass(es)</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div id="blc-container" class="hidden">
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink glasses of beer/lager/cider?</label>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <fieldset class="mt-4">
-                    <legend class="sr-only">Beer, lager, and cider consumption frequencies</legend>
-                    <div class="space-y-4">
-                      <div class="flex items-center">
-                        <input id="blc-freq-lt-one-month" name="blc-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="blc-freq-lt-once-per-month" name="blc-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="blc-freq-2-3-per-month" name="blc-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="blc-freq-1-2-per-week" name="blc-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="blc-freq-3-4-per-week" name="blc-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="blc-freq-5-6-per-week" name="blc-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="blc-freq-daily" name="blc-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="blc-freq-unknown" name="blc-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="blc-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
               
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <div>
-                  <label for="blc-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer/lager/cider, how many servings did you drink per day?</label>
-                  <p class="text-sm text-gray-500">A serving of beer/lager/cider is a 12-ounce container.</p>
+              <div id="blc-container" class="hidden space-y-6 sm:space-y-5">
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink glasses of beer/lager/cider?</label>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <fieldset class="mt-4">
+                      <legend class="sr-only">Beer, lager, and cider consumption frequencies</legend>
+                      <div class="space-y-4">
+                        <div class="flex items-center">
+                          <input id="blc-freq-lt-one-month" name="blc-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="blc-freq-lt-once-per-month" name="blc-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="blc-freq-2-3-per-month" name="blc-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="blc-freq-1-2-per-week" name="blc-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="blc-freq-3-4-per-week" name="blc-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="blc-freq-5-6-per-week" name="blc-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="blc-freq-daily" name="blc-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="blc-freq-unknown" name="blc-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
                 </div>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <input type="number" name="blc-serving" id="blc-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="blc-serving-units">
-                    <span id="blc-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">glass(es)</span>
+                
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <div>
+                    <label for="blc-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer/lager/cider, how many servings did you drink per day?</label>
+                    <p class="text-sm text-gray-500">A serving of beer/lager/cider is a 12-ounce container.</p>
+                  </div>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <input type="number" name="blc-serving" id="blc-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="blc-serving-units">
+                      <span id="blc-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">glass(es)</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div id="beer-container" class="hidden">
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink bottles of beer?</label>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <fieldset class="mt-4">
-                    <legend class="sr-only">Beer consumption frequencies</legend>
-                    <div class="space-y-4">
-                      <div class="flex items-center">
-                        <input id="beer-freq-lt-one-month" name="beer-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="beer-freq-lt-once-per-month" name="beer-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="beer-freq-2-3-per-month" name="beer-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="beer-freq-1-2-per-week" name="beer-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="beer-freq-3-4-per-week" name="beer-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="beer-freq-5-6-per-week" name="beer-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="beer-freq-daily" name="beer-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="beer-freq-unknown" name="beer-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="beer-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
               
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <div>
-                  <label for="beer-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer, how many servings did you drink per day?</label>
-                  <p class="text-sm text-gray-500">A serving of beer is a 12-ounce container.</p>
+              <div id="beer-container" class="hidden space-y-6 sm:space-y-5">
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink bottles of beer?</label>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <fieldset class="mt-4">
+                      <legend class="sr-only">Beer consumption frequencies</legend>
+                      <div class="space-y-4">
+                        <div class="flex items-center">
+                          <input id="beer-freq-lt-one-month" name="beer-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="beer-freq-lt-once-per-month" name="beer-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="beer-freq-2-3-per-month" name="beer-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="beer-freq-1-2-per-week" name="beer-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="beer-freq-3-4-per-week" name="beer-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="beer-freq-5-6-per-week" name="beer-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="beer-freq-daily" name="beer-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="beer-freq-unknown" name="beer-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
                 </div>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <input type="number" name="beer-serving" id="beer-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="beer-serving-units">
-                    <span id="beer-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">bottle(s)</span>
+                
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <div>
+                    <label for="beer-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer, how many servings did you drink per day?</label>
+                    <p class="text-sm text-gray-500">A serving of beer is a 12-ounce container.</p>
+                  </div>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <input type="number" name="beer-serving" id="beer-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="beer-serving-units">
+                      <span id="beer-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">bottle(s)</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div id="pop-container" class="hidden">
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink alcoholic pop beverages?</label>
-                  <p class="text-sm text-gray-500">These includes wine coolers, hard soda, spiked seltzer (sparkling water), Smirnoff Ice, malt liquor, or pre-mixed cocktails.</p>
-                </div>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <fieldset class="mt-4">
-                    <legend class="sr-only">Alcoholic pop beverage consumption consumption frequencies</legend>
-                    <div class="space-y-4">
-                      <div class="flex items-center">
-                        <input id="pop-freq-lt-one-month" name="pop-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="pop-freq-lt-once-per-month" name="pop-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="pop-freq-2-3-per-month" name="pop-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="pop-freq-1-2-per-week" name="pop-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="pop-freq-3-4-per-week" name="pop-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="pop-freq-5-6-per-week" name="pop-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="pop-freq-daily" name="pop-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="pop-freq-unknown" name="pop-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="pop-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
               
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <div>
-                  <label for="pop-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank alcoholic pop beverages, how many servings did you drink per day?</label>
-                  <p class="text-sm text-gray-500">A serving of beer, hard cider, wine coolers, 'hard soda', spiked sparkling water, or malt liquor is a 12-ounce container. A serving of liquor or mixed drinks is one shot or 1.5 ounces of liquor.</p>
+              <div id="pop-container" class="hidden space-y-6 sm:space-y-5">
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink alcoholic pop beverages?</label>
+                    <p class="text-sm text-gray-500">These includes wine coolers, hard soda, spiked seltzer (sparkling water), Smirnoff Ice, malt liquor, or pre-mixed cocktails.</p>
+                  </div>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <fieldset class="mt-4">
+                      <legend class="sr-only">Alcoholic pop beverage consumption consumption frequencies</legend>
+                      <div class="space-y-4">
+                        <div class="flex items-center">
+                          <input id="pop-freq-lt-one-month" name="pop-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="pop-freq-lt-once-per-month" name="pop-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="pop-freq-2-3-per-month" name="pop-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="pop-freq-1-2-per-week" name="pop-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="pop-freq-3-4-per-week" name="pop-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="pop-freq-5-6-per-week" name="pop-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="pop-freq-daily" name="pop-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="pop-freq-unknown" name="pop-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
                 </div>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <input type="number" name="pop-serving" id="pop-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="pop-serving-units">
-                    <span id="pop-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">beverage(s)</span>
+                
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <div>
+                    <label for="pop-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank alcoholic pop beverages, how many servings did you drink per day?</label>
+                    <p class="text-sm text-gray-500">A serving of beer, hard cider, wine coolers, 'hard soda', spiked sparkling water, or malt liquor is a 12-ounce container. A serving of liquor or mixed drinks is one shot or 1.5 ounces of liquor.</p>
+                  </div>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <input type="number" name="pop-serving" id="pop-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="pop-serving-units">
+                      <span id="pop-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">beverage(s)</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div id="shots-container" class="hidden">
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually take shots of liquor?</label>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <fieldset class="mt-4">
-                    <legend class="sr-only">Shots of liquor consumption frequencies</legend>
-                    <div class="space-y-4">
-                      <div class="flex items-center">
-                        <input id="shots-freq-lt-one-month" name="shots-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="shots-freq-lt-once-per-month" name="shots-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="shots-freq-2-3-per-month" name="shots-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="shots-freq-1-2-per-week" name="shots-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="shots-freq-3-4-per-week" name="shots-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="shots-freq-5-6-per-week" name="shots-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="shots-freq-daily" name="shots-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input id="shots-freq-unknown" name="shots-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                        <label for="shots-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
               
-              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <div>
-                  <label for="shot-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank liquor, how many servings did you drink per day?</label>
-                  <p class="text-sm text-gray-500">A serving of liquor or mixed drinks is one shot or 1.5 ounces of liquor.</p>
+              <div id="shots-container" class="hidden space-y-6 sm:space-y-5">
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually take shots of liquor?</label>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <fieldset class="mt-4">
+                      <legend class="sr-only">Shots of liquor consumption frequencies</legend>
+                      <div class="space-y-4">
+                        <div class="flex items-center">
+                          <input id="shots-freq-lt-one-month" name="shots-freq" type="radio" value="lt-once-a-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="shots-freq-lt-once-per-month" name="shots-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="shots-freq-2-3-per-month" name="shots-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-2-3-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">2-3 times a month.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="shots-freq-1-2-per-week" name="shots-freq" type="radio" value="1-2-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-1-2-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">1-2 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="shots-freq-3-4-per-week" name="shots-freq" type="radio" value="3-4-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-3-4-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">3-4 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="shots-freq-5-6-per-week" name="shots-freq" type="radio" value="5-6-per-week" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-5-6-per-week" class="ml-3 block text-sm font-medium leading-6 text-gray-900">5-6 times a week.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="shots-freq-daily" name="shots-freq" type="radio" value="daily" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-daily" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Every day.</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input id="shots-freq-unknown" name="shots-freq" type="radio" value="unknown" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
                 </div>
-                <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <input type="number" name="shot-serving" id="shot-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="shot-serving-units">
-                    <span id="shot-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">shot(s)</span>
+                
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                  <div>
+                    <label for="shot-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank liquor, how many servings did you drink per day?</label>
+                    <p class="text-sm text-gray-500">A serving of liquor or mixed drinks is one shot or 1.5 ounces of liquor.</p>
+                  </div>
+                  <div class="mt-1 sm:col-span-2 sm:mt-0">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <input type="number" name="shot-serving" id="shot-serving" min="1" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="shot-serving-units">
+                      <span id="shot-serving-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">shot(s)</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -827,7 +833,10 @@ icareLitApp.innerHTML = `
 `
 
 const ageAtMenopauseContainer = document.getElementById('age-menopause-container');
-// const parousContainer = document.getElementById('parous-container');
+const childrenContainer = document.getElementById('children-container');
+const birthsContainer = document.getElementById('births-container');
+const hormonalContraceptiveContainer = document.getElementById('hormonal-contraceptive-container');
+const alcoholContainer = document.getElementById('alcohol-container');
 const wineContainer = document.getElementById('wine-container');
 const blcContainer = document.getElementById('blc-container');
 const beerContainer = document.getElementById('beer-container');
@@ -852,6 +861,75 @@ document.getElementById('menopause-unknown').addEventListener('change', (event) 
   }
 });
 
+document.getElementById('num-pregnancies').addEventListener('change', (event) => {
+  if (event.target.value > 0) {
+    childrenContainer.classList.remove('hidden');
+  } else {
+    if (!childrenContainer.classList.contains('hidden')) {
+      childrenContainer.classList.add('hidden');
+    }
+  }
+});
+
+document.getElementById('parous-yes').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    birthsContainer.classList.remove('hidden');
+  }
+});
+
+document.getElementById('parous-no').addEventListener('change', (event) => {
+  if (event.target.checked && !birthsContainer.classList.contains('hidden')) {
+    birthsContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('parous-unknown').addEventListener('change', (event) => {
+  if (event.target.checked && !birthsContainer.classList.contains('hidden')) {
+    birthsContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('hormonal-contraceptive-yes').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    hormonalContraceptiveContainer.classList.remove('hidden');
+  }
+});
+
+document.getElementById('hormonal-contraceptive-no').addEventListener('change', (event) => {
+  if (event.target.checked && !hormonalContraceptiveContainer.classList.contains('hidden')) {
+    hormonalContraceptiveContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('hormonal-contraceptive-unknown').addEventListener('change', (event) => {
+  if (event.target.checked && !hormonalContraceptiveContainer.classList.contains('hidden')) {
+    hormonalContraceptiveContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('alcohol-use-former').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    alcoholContainer.classList.remove('hidden');
+  }
+});
+
+document.getElementById('alcohol-use-current').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    alcoholContainer.classList.remove('hidden');
+  }
+});
+
+document.getElementById('alcohol-use-never').addEventListener('change', (event) => {
+  if (event.target.checked && !alcoholContainer.classList.contains('hidden')) {
+    alcoholContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('alcohol-use-unknown').addEventListener('change', (event) => {
+  if (event.target.checked && !alcoholContainer.classList.contains('hidden')) {
+    alcoholContainer.classList.add('hidden');
+  }
+});
 
 document.getElementById('alcohol-type-wine').addEventListener('change', (event) => {
   if (event.target.checked) {
@@ -941,5 +1019,3 @@ icareLitApp.addEventListener('submit', (event) => {
   const data = Object.fromEntries(formData.entries());
   console.log(data);
 });
-
-//
