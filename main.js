@@ -208,7 +208,7 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div id="children-container">
+            <div id="children-container" class="hidden space-y-6 sm:space-y-5">
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever had any children?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -869,15 +869,15 @@ document.getElementById('menopause-unknown').addEventListener('change', (event) 
 });
 
 document.getElementById('num-pregnancies').addEventListener('input', (event) => {
-  if (parseInt(event.target.value) > 0) {
-    childrenContainer.classList.remove('hidden');
-  } else {
+  if (parseInt(event.target.value) === 0 || event.target.value === '') {
     if (!childrenContainer.classList.contains('hidden')) {
       childrenContainer.classList.add('hidden');
     }
     if (!birthsContainer.classList.contains('hidden')) {
       birthsContainer.classList.add('hidden');
     }
+  } else {
+    childrenContainer.classList.remove('hidden');
   }
 });
 
