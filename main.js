@@ -868,8 +868,8 @@ document.getElementById('menopause-unknown').addEventListener('change', (event) 
   }
 });
 
-document.getElementById('num-pregnancies').addEventListener('change', (event) => {
-  if (event.target.value > 0) {
+document.getElementById('num-pregnancies').addEventListener('input', (event) => {
+  if (parseInt(event.target.value) > 0) {
     childrenContainer.classList.remove('hidden');
   } else {
     if (!childrenContainer.classList.contains('hidden')) {
