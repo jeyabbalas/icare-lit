@@ -189,7 +189,7 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div id="age-menopause-container" class="hidden">
+            <div id="age-menopause-container" class="hidden space-y-6 sm:space-y-5">
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label for="age-menopause" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your last menstrual period?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -237,7 +237,7 @@ icareLitApp.innerHTML = `
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label for="parity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How many children have you had?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <input type="number" name="parity" id="parity" min="0" max="25" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                  <input type="number" name="parity" id="parity" min="1" max="25" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
                 </div>
               </div>
               
@@ -272,49 +272,54 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Do you currently use menopausal hormone treatment?</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <fieldset class="mt-4">
-                  <legend class="sr-only">Current menopausal hormone treatment use status</legend>
-                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                    <div class="flex items-center">
-                      <input id="hormone-treatment-current-yes" name="hormone-treatment-current" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormone-treatment-current-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+            <div id="hormone-treatment-current-container" class="hidden space-y-6 sm:space-y-5">
+              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Do you currently use menopausal hormone treatment?</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Current menopausal hormone treatment use status</legend>
+                    <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                      <div class="flex items-center">
+                        <input id="hormone-treatment-current-yes" name="hormone-treatment-current" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormone-treatment-current-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="hormone-treatment-current-no" name="hormone-treatment-current" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormone-treatment-current-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="hormone-treatment-current-unknown" name="hormone-treatment-current" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormone-treatment-current-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
+                      </div>
                     </div>
-                    <div class="flex items-center">
-                      <input id="hormone-treatment-current-no" name="hormone-treatment-current" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormone-treatment-current-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
-                    </div>
-                    <div class="flex items-center">
-                      <input id="hormone-treatment-current-unknown" name="hormone-treatment-current" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormone-treatment-current-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
-                    </div>
-                  </div>
-                </fieldset>
+                  </fieldset>
+                </div>
               </div>
             </div>
             
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">What type of menopausal hormone treatment do you currently use?</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <fieldset class="mt-4">
-                  <legend class="sr-only">Menopausal hormone treatment type</legend>
-                  <div class="space-y-4">
-                    <div class="flex items-center">
-                      <input id="hormone-treatment-type-e" name="hormone-treatment-type" type="radio" value="e" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormone-treatment-type-e" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Estrogen prescription hormone only.</label>
+            
+            <div id="hormone-treatment-type-container" class="hidden space-y-6 sm:space-y-5">
+              <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">What type of menopausal hormone treatment do you currently use?</label>
+                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Menopausal hormone treatment type</legend>
+                    <div class="space-y-4">
+                      <div class="flex items-center">
+                        <input id="hormone-treatment-type-e" name="hormone-treatment-type" type="radio" value="e" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormone-treatment-type-e" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Estrogen prescription hormone only.</label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="hormone-treatment-type-c" name="hormone-treatment-type" type="radio" value="c" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormone-treatment-type-c" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Combined estrogen plus progestin prescription hormones.</label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="hormone-treatment-type-unknown" name="hormone-treatment-type" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <label for="hormone-treatment-type-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
+                      </div>
                     </div>
-                    <div class="flex items-center">
-                      <input id="hormone-treatment-type-c" name="hormone-treatment-type" type="radio" value="c" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormone-treatment-type-c" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Combined estrogen plus progestin prescription hormones.</label>
-                    </div>
-                    <div class="flex items-center">
-                      <input id="hormone-treatment-type-unknown" name="hormone-treatment-type" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="hormone-treatment-type-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know.</label>
-                    </div>
-                  </div>
-                </fieldset>
+                  </fieldset>
+                </div>
               </div>
             </div>
             
@@ -344,7 +349,7 @@ icareLitApp.innerHTML = `
               </div>
             </div>
             
-            <div id="hormonal-contraceptive-container" class="hidden">
+            <div id="hormonal-contraceptive-container" class="hidden space-y-6 sm:space-y-5">
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Do you currently use any hormonal contraceptive medication or device?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -835,6 +840,8 @@ icareLitApp.innerHTML = `
 const ageAtMenopauseContainer = document.getElementById('age-menopause-container');
 const childrenContainer = document.getElementById('children-container');
 const birthsContainer = document.getElementById('births-container');
+const hormoneTreatmentCurrentContainer = document.getElementById('hormone-treatment-current-container');
+const hormoneTreatmentTypeContainer = document.getElementById('hormone-treatment-type-container');
 const hormonalContraceptiveContainer = document.getElementById('hormonal-contraceptive-container');
 const alcoholContainer = document.getElementById('alcohol-container');
 const wineContainer = document.getElementById('wine-container');
@@ -868,6 +875,9 @@ document.getElementById('num-pregnancies').addEventListener('change', (event) =>
     if (!childrenContainer.classList.contains('hidden')) {
       childrenContainer.classList.add('hidden');
     }
+    if (!birthsContainer.classList.contains('hidden')) {
+      birthsContainer.classList.add('hidden');
+    }
   }
 });
 
@@ -886,6 +896,42 @@ document.getElementById('parous-no').addEventListener('change', (event) => {
 document.getElementById('parous-unknown').addEventListener('change', (event) => {
   if (event.target.checked && !birthsContainer.classList.contains('hidden')) {
     birthsContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('hormone-treatment-yes').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    hormoneTreatmentCurrentContainer.classList.remove('hidden');
+  }
+});
+
+document.getElementById('hormone-treatment-no').addEventListener('change', (event) => {
+  if (event.target.checked && !hormoneTreatmentCurrentContainer.classList.contains('hidden')) {
+    hormoneTreatmentCurrentContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('hormone-treatment-unknown').addEventListener('change', (event) => {
+  if (event.target.checked && !hormoneTreatmentCurrentContainer.classList.contains('hidden')) {
+    hormoneTreatmentCurrentContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('hormone-treatment-current-yes').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    hormoneTreatmentTypeContainer.classList.remove('hidden');
+  }
+});
+
+document.getElementById('hormone-treatment-current-no').addEventListener('change', (event) => {
+  if (event.target.checked && !hormoneTreatmentTypeContainer.classList.contains('hidden')) {
+    hormoneTreatmentTypeContainer.classList.add('hidden');
+  }
+});
+
+document.getElementById('hormone-treatment-current-unknown').addEventListener('change', (event) => {
+  if (event.target.checked && !hormoneTreatmentTypeContainer.classList.contains('hidden')) {
+    hormoneTreatmentTypeContainer.classList.add('hidden');
   }
 });
 
