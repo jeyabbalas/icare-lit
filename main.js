@@ -27,7 +27,7 @@ icareLitApp.innerHTML = `
       </div>
       
       <div class="flex md:mt-0 md:ml-4 shrink-0">
-        <a href="https://github.com/jeyabbalas/icare-lit">
+        <a title="Source code" href="https://github.com/jeyabbalas/icare-lit">
           <img src="${githubIcon}" class="h-10 w-10 sm:h-12 sm:w-12 fill-current" alt="github logo" />
         </a>
       </div>
@@ -306,11 +306,11 @@ icareLitApp.innerHTML = `
                     <legend class="sr-only">Menopausal hormone treatment type</legend>
                     <div class="space-y-4">
                       <div class="flex items-center">
-                        <input id="hormone-treatment-type-e" name="hormone-treatment-type" type="radio" value="e" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <input id="hormone-treatment-type-e" name="hormone-treatment-type" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
                         <label for="hormone-treatment-type-e" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Estrogen prescription hormone only.</label>
                       </div>
                       <div class="flex items-center">
-                        <input id="hormone-treatment-type-c" name="hormone-treatment-type" type="radio" value="c" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <input id="hormone-treatment-type-c" name="hormone-treatment-type" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
                         <label for="hormone-treatment-type-c" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Combined estrogen plus progestin prescription hormones.</label>
                       </div>
                       <div class="flex items-center">
@@ -457,8 +457,8 @@ icareLitApp.innerHTML = `
                           <label for="wine-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="wine-freq-lt-once-per-month" name="wine-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="wine-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="wine-freq-once-per-month" name="wine-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="wine-freq-2-3-per-month" name="wine-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -515,8 +515,8 @@ icareLitApp.innerHTML = `
                           <label for="blc-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="blc-freq-lt-once-per-month" name="blc-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="blc-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="blc-freq-once-per-month" name="blc-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="blc-freq-2-3-per-month" name="blc-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -573,8 +573,8 @@ icareLitApp.innerHTML = `
                           <label for="beer-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="beer-freq-lt-once-per-month" name="beer-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="beer-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="beer-freq-once-per-month" name="beer-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="beer-freq-2-3-per-month" name="beer-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -634,8 +634,8 @@ icareLitApp.innerHTML = `
                           <label for="pop-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="pop-freq-lt-once-per-month" name="pop-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="pop-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="pop-freq-once-per-month" name="pop-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="pop-freq-2-3-per-month" name="pop-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -692,8 +692,8 @@ icareLitApp.innerHTML = `
                           <label for="shots-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="shots-freq-lt-once-per-month" name="shots-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="shots-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="shots-freq-once-per-month" name="shots-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="shots-freq-2-3-per-month" name="shots-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -736,29 +736,6 @@ icareLitApp.innerHTML = `
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever smoked?</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <fieldset class="mt-4">
-                  <legend class="sr-only">Smoking status</legend>
-                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                    <div class="flex items-center">
-                      <input id="smoking-yes" name="smoking" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="smoking-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
-                    </div>
-                    <div class="flex items-center">
-                      <input id="smoking-no" name="smoking" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="smoking-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
-                    </div>
-                    <div class="flex items-center">
-                      <input id="smoking-unknown" name="smoking" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="smoking-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
-                    </div>
-                  </div>
-                </fieldset>
               </div>
             </div>
             
@@ -851,217 +828,553 @@ const popContainer = document.getElementById('pop-container');
 const shotsContainer = document.getElementById('shots-container');
 
 document.getElementById('menopause-yes').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    ageAtMenopauseContainer.classList.remove('hidden');
-  }
+    if (event.target.checked) {
+        ageAtMenopauseContainer.classList.remove('hidden');
+    }
 });
 
 document.getElementById('menopause-no').addEventListener('change', (event) => {
-  if (event.target.checked && !ageAtMenopauseContainer.classList.contains('hidden')) {
-    ageAtMenopauseContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !ageAtMenopauseContainer.classList.contains('hidden')) {
+        ageAtMenopauseContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('menopause-unknown').addEventListener('change', (event) => {
-  if (event.target.checked && !ageAtMenopauseContainer.classList.contains('hidden')) {
-    ageAtMenopauseContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !ageAtMenopauseContainer.classList.contains('hidden')) {
+        ageAtMenopauseContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('num-pregnancies').addEventListener('input', (event) => {
-  if (parseInt(event.target.value) === 0 || event.target.value === '') {
-    if (!childrenContainer.classList.contains('hidden')) {
-      childrenContainer.classList.add('hidden');
+    if (parseInt(event.target.value) === 0 || event.target.value === '') {
+        if (!childrenContainer.classList.contains('hidden')) {
+            childrenContainer.classList.add('hidden');
+        }
+        if (!birthsContainer.classList.contains('hidden')) {
+            birthsContainer.classList.add('hidden');
+        }
+    } else {
+        childrenContainer.classList.remove('hidden');
     }
-    if (!birthsContainer.classList.contains('hidden')) {
-      birthsContainer.classList.add('hidden');
-    }
-  } else {
-    childrenContainer.classList.remove('hidden');
-  }
 });
 
 document.getElementById('parous-yes').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    birthsContainer.classList.remove('hidden');
-  }
+    if (event.target.checked) {
+        birthsContainer.classList.remove('hidden');
+    }
 });
 
 document.getElementById('parous-no').addEventListener('change', (event) => {
-  if (event.target.checked && !birthsContainer.classList.contains('hidden')) {
-    birthsContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !birthsContainer.classList.contains('hidden')) {
+        birthsContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('parous-unknown').addEventListener('change', (event) => {
-  if (event.target.checked && !birthsContainer.classList.contains('hidden')) {
-    birthsContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !birthsContainer.classList.contains('hidden')) {
+        birthsContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('hormone-treatment-yes').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    hormoneTreatmentCurrentContainer.classList.remove('hidden');
-  }
+    if (event.target.checked) {
+        hormoneTreatmentCurrentContainer.classList.remove('hidden');
+    }
 });
 
 document.getElementById('hormone-treatment-no').addEventListener('change', (event) => {
-  if (event.target.checked && !hormoneTreatmentCurrentContainer.classList.contains('hidden')) {
-    hormoneTreatmentCurrentContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !hormoneTreatmentCurrentContainer.classList.contains('hidden')) {
+        hormoneTreatmentCurrentContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('hormone-treatment-unknown').addEventListener('change', (event) => {
-  if (event.target.checked && !hormoneTreatmentCurrentContainer.classList.contains('hidden')) {
-    hormoneTreatmentCurrentContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !hormoneTreatmentCurrentContainer.classList.contains('hidden')) {
+        hormoneTreatmentCurrentContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('hormone-treatment-current-yes').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    hormoneTreatmentTypeContainer.classList.remove('hidden');
-  }
+    if (event.target.checked) {
+        hormoneTreatmentTypeContainer.classList.remove('hidden');
+    }
 });
 
 document.getElementById('hormone-treatment-current-no').addEventListener('change', (event) => {
-  if (event.target.checked && !hormoneTreatmentTypeContainer.classList.contains('hidden')) {
-    hormoneTreatmentTypeContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !hormoneTreatmentTypeContainer.classList.contains('hidden')) {
+        hormoneTreatmentTypeContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('hormone-treatment-current-unknown').addEventListener('change', (event) => {
-  if (event.target.checked && !hormoneTreatmentTypeContainer.classList.contains('hidden')) {
-    hormoneTreatmentTypeContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !hormoneTreatmentTypeContainer.classList.contains('hidden')) {
+        hormoneTreatmentTypeContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('hormonal-contraceptive-yes').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    hormonalContraceptiveContainer.classList.remove('hidden');
-  }
+    if (event.target.checked) {
+        hormonalContraceptiveContainer.classList.remove('hidden');
+    }
 });
 
 document.getElementById('hormonal-contraceptive-no').addEventListener('change', (event) => {
-  if (event.target.checked && !hormonalContraceptiveContainer.classList.contains('hidden')) {
-    hormonalContraceptiveContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !hormonalContraceptiveContainer.classList.contains('hidden')) {
+        hormonalContraceptiveContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('hormonal-contraceptive-unknown').addEventListener('change', (event) => {
-  if (event.target.checked && !hormonalContraceptiveContainer.classList.contains('hidden')) {
-    hormonalContraceptiveContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !hormonalContraceptiveContainer.classList.contains('hidden')) {
+        hormonalContraceptiveContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('alcohol-use-former').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    alcoholContainer.classList.remove('hidden');
-  }
+    if (event.target.checked) {
+        alcoholContainer.classList.remove('hidden');
+    }
 });
 
 document.getElementById('alcohol-use-current').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    alcoholContainer.classList.remove('hidden');
-  }
+    if (event.target.checked) {
+        alcoholContainer.classList.remove('hidden');
+    }
 });
 
 document.getElementById('alcohol-use-never').addEventListener('change', (event) => {
-  if (event.target.checked && !alcoholContainer.classList.contains('hidden')) {
-    alcoholContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !alcoholContainer.classList.contains('hidden')) {
+        alcoholContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('alcohol-use-unknown').addEventListener('change', (event) => {
-  if (event.target.checked && !alcoholContainer.classList.contains('hidden')) {
-    alcoholContainer.classList.add('hidden');
-  }
+    if (event.target.checked && !alcoholContainer.classList.contains('hidden')) {
+        alcoholContainer.classList.add('hidden');
+    }
 });
 
 document.getElementById('alcohol-type-wine').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    wineContainer.classList.remove('hidden');
-    document.getElementById('alcohol-type-unknown').checked = false;
-  } else {
-    if (!wineContainer.classList.contains('hidden')) {
-      wineContainer.classList.add('hidden');
+    if (event.target.checked) {
+        wineContainer.classList.remove('hidden');
+        document.getElementById('alcohol-type-unknown').checked = false;
+    } else {
+        if (!wineContainer.classList.contains('hidden')) {
+            wineContainer.classList.add('hidden');
+        }
     }
-  }
 });
 
 document.getElementById('alcohol-type-blc').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    blcContainer.classList.remove('hidden');
-    document.getElementById('alcohol-type-unknown').checked = false;
-  } else {
-    if (!blcContainer.classList.contains('hidden')) {
-      blcContainer.classList.add('hidden');
+    if (event.target.checked) {
+        blcContainer.classList.remove('hidden');
+        document.getElementById('alcohol-type-unknown').checked = false;
+    } else {
+        if (!blcContainer.classList.contains('hidden')) {
+            blcContainer.classList.add('hidden');
+        }
     }
-  }
 });
 
 document.getElementById('alcohol-type-beer').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    beerContainer.classList.remove('hidden');
-    document.getElementById('alcohol-type-unknown').checked = false;
-  } else {
-    if (!beerContainer.classList.contains('hidden')) {
-      beerContainer.classList.add('hidden');
+    if (event.target.checked) {
+        beerContainer.classList.remove('hidden');
+        document.getElementById('alcohol-type-unknown').checked = false;
+    } else {
+        if (!beerContainer.classList.contains('hidden')) {
+            beerContainer.classList.add('hidden');
+        }
     }
-  }
 });
 
 document.getElementById('alcohol-type-pop').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    popContainer.classList.remove('hidden');
-    document.getElementById('alcohol-type-unknown').checked = false;
-  } else {
-    if (!popContainer.classList.contains('hidden')) {
-      popContainer.classList.add('hidden');
+    if (event.target.checked) {
+        popContainer.classList.remove('hidden');
+        document.getElementById('alcohol-type-unknown').checked = false;
+    } else {
+        if (!popContainer.classList.contains('hidden')) {
+            popContainer.classList.add('hidden');
+        }
     }
-  }
 });
 
 document.getElementById('alcohol-type-shots').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    shotsContainer.classList.remove('hidden');
-    document.getElementById('alcohol-type-unknown').checked = false;
-  } else {
-    if (!shotsContainer.classList.contains('hidden')) {
-      shotsContainer.classList.add('hidden');
+    if (event.target.checked) {
+        shotsContainer.classList.remove('hidden');
+        document.getElementById('alcohol-type-unknown').checked = false;
+    } else {
+        if (!shotsContainer.classList.contains('hidden')) {
+            shotsContainer.classList.add('hidden');
+        }
     }
-  }
 });
 
 //input id="alcohol-type-unknown"
 document.getElementById('alcohol-type-unknown').addEventListener('change', (event) => {
-  if (event.target.checked) {
-    document.getElementById('alcohol-type-wine').checked = false;
-    if (!wineContainer.classList.contains('hidden')) {
-      wineContainer.classList.add('hidden');
+    if (event.target.checked) {
+        document.getElementById('alcohol-type-wine').checked = false;
+        if (!wineContainer.classList.contains('hidden')) {
+            wineContainer.classList.add('hidden');
+        }
+        document.getElementById('alcohol-type-blc').checked = false;
+        if (!blcContainer.classList.contains('hidden')) {
+            blcContainer.classList.add('hidden');
+        }
+        document.getElementById('alcohol-type-beer').checked = false;
+        if (!beerContainer.classList.contains('hidden')) {
+            beerContainer.classList.add('hidden');
+        }
+        document.getElementById('alcohol-type-pop').checked = false;
+        if (!popContainer.classList.contains('hidden')) {
+            popContainer.classList.add('hidden');
+        }
+        document.getElementById('alcohol-type-shots').checked = false;
+        if (!shotsContainer.classList.contains('hidden')) {
+            shotsContainer.classList.add('hidden');
+        }
     }
-    document.getElementById('alcohol-type-blc').checked = false;
-    if (!blcContainer.classList.contains('hidden')) {
-      blcContainer.classList.add('hidden');
-    }
-    document.getElementById('alcohol-type-beer').checked = false;
-    if (!beerContainer.classList.contains('hidden')) {
-      beerContainer.classList.add('hidden');
-    }
-    document.getElementById('alcohol-type-pop').checked = false;
-    if (!popContainer.classList.contains('hidden')) {
-      popContainer.classList.add('hidden');
-    }
-    document.getElementById('alcohol-type-shots').checked = false;
-    if (!shotsContainer.classList.contains('hidden')) {
-      shotsContainer.classList.add('hidden');
-    }
-  }
 });
 
+function preprocessHeight(height_ft, height_in) {
+    if ((isNaN(height_ft) && isNaN(height_in)) || isNaN(height_ft)) {
+        return undefined;
+    }
+    if (isNaN(height_in)) {
+        height_in = 0;
+    }
+    const height_cms = (height_ft * 12 + height_in) * 2.54;
+    return height_cms / 10; // per iCARE-Lit definition
+}
+
+function calculateBMI(weight_lbs, height_ft, height_in) {
+    const binBMI = (bmi) => {
+        if (bmi < 18.5) {
+            return '<18.5';
+        } else if (bmi < 25) {
+            return '18.5-25';
+        } else if (bmi < 30) {
+            return '25-30';
+        } else {
+            return '>=30';
+        }
+    };
+
+    if ((isNaN(height_ft) && isNaN(height_in)) || isNaN(height_ft)) {
+        return undefined;
+    }
+    if (isNaN(height_in)) {
+        height_in = 0;
+    }
+    if (isNaN(weight_lbs)) {
+        return undefined;
+    }
+
+    const height_inches = height_ft * 12 + height_in;
+    return binBMI(weight_lbs / (height_inches * height_inches) * 703);
+}
+
+function preprocessAgeAtMenarche(ageAtMenarche) {
+    const binAgeAtMenarche = (ageAtMenarche) => {
+        if (ageAtMenarche <= 10) {
+            return '<=10';
+        } else if (ageAtMenarche === 11) {
+            return '11';
+        } else if (ageAtMenarche === 12) {
+            return '12';
+        } else if (ageAtMenarche === 13) {
+            return '13';
+        } else if (ageAtMenarche === 14) {
+            return '14';
+        } else if (ageAtMenarche === 15) {
+            return '15';
+        } else {
+            return '>=16';
+        }
+    };
+
+    if (isNaN(ageAtMenarche)) {
+        return undefined;
+    }
+
+    return binAgeAtMenarche(ageAtMenarche);
+}
+
+function preprocessParity(numPregnancies, parous, parity) {
+    const binParity = (parity) => {
+        if (parity === 0) {
+            return '0';
+        } else if (parity === 1) {
+            return '1';
+        } else if (parity === 2) {
+            return '2';
+        } else {
+            return '>=3';
+        }
+    };
+
+    if (isNaN(numPregnancies)) {
+        return undefined;
+    }
+    if (numPregnancies === 0) {
+        return binParity(0);
+    }
+    if (isNaN(parous)) {
+        return undefined;
+    }
+    if (parous === 0) {
+        return binParity(0);
+    }
+    if (isNaN(parity)) {
+        return undefined;
+    }
+
+    return binParity(parity);
+}
+
+function processAgeAtFirstChildBirth(numPregnancies, parous, parity, ageAtFirstChildBirth) {
+    const binAgeAtFirstChildBirth = (ageAtFirstChildBirth) => {
+        if (ageAtFirstChildBirth < 20) {
+            return '<20';
+        } else if (ageAtFirstChildBirth < 25) {
+            return '20-25';
+        } else if (ageAtFirstChildBirth < 30) {
+            return '25-30';
+        } else {
+            return '>=30';
+        }
+    };
+
+    if (isNaN(numPregnancies) || numPregnancies === 0 || isNaN(parous) || parous === 0 || parity === 0 ||
+        isNaN(ageAtFirstChildBirth)) {
+        return undefined;
+    }
+
+    return binAgeAtFirstChildBirth(ageAtFirstChildBirth);
+}
+
+function processHormoneTreatmentUse(hormoneTreatmentUse, hormoneTreatmentCurrentUse) {
+    if (isNaN(hormoneTreatmentUse)) {
+        return undefined;
+    } else if (hormoneTreatmentUse === 0) {
+        return 'never';
+    } else {
+        if (isNaN(hormoneTreatmentCurrentUse)) {
+            return undefined;
+        }
+        if (hormoneTreatmentCurrentUse === 0) {
+            return 'former';
+        } else {
+            return 'current';
+        }
+    }
+}
+
+function processHormoneContraceptiveUse(hormoneContraceptiveUse) {
+    if (isNaN(hormoneContraceptiveUse)) {
+        return undefined;
+    }
+
+    return hormoneContraceptiveUse;
+}
+
+function processHormoneContraceptiveCurrentUse(hormoneContraceptiveCurrentUse) {
+    if (isNaN(hormoneContraceptiveCurrentUse)) {
+        return undefined;
+    }
+
+    return hormoneContraceptiveCurrentUse;
+}
+
+function processBenignBreastDisease(benignBreastDisease) {
+    if (isNaN(benignBreastDisease)) {
+        return undefined;
+    }
+
+    return benignBreastDisease;
+}
+
+function processFamilyHistoryBreastCancer(familyHistoryBreastCancer) {
+    if (isNaN(familyHistoryBreastCancer)) {
+        return undefined;
+    }
+
+    return familyHistoryBreastCancer;
+}
+
+function processAgeAtMenopause(menopausalStatus, ageAtMenopause) {
+    const binAgeAtMenopause = (ageAtMenopause) => {
+        if (ageAtMenopause < 40) {
+            return '<40';
+        } else if (ageAtMenopause < 45) {
+            return '40-45';
+        } else if (ageAtMenopause < 50) {
+            return '45-50';
+        } else if (ageAtMenopause < 55) {
+            return '50-55';
+        } else {
+            return '>=55';
+        }
+    };
+
+    if (isNaN(menopausalStatus) || menopausalStatus === 0 || isNaN(ageAtMenopause)) {
+        return undefined;
+    }
+
+    return binAgeAtMenopause(ageAtMenopause);
+}
+
+function preprocessHormoneTreatmentType(hormoneTreatmentUse, hormoneTreatmentCurrentUse, hormoneTreatmentType) {
+    if (isNaN(hormoneTreatmentUse) || hormoneTreatmentUse === 0 || isNaN(hormoneTreatmentCurrentUse) ||
+        hormoneTreatmentCurrentUse === 0 || isNaN(hormoneTreatmentType)) {
+        return undefined;
+    }
+
+    return hormoneTreatmentType;
+}
+
+function preprocessAlcoholIntake(alcoholUse, alcoholType, wineFrequency, wineServing, blcFrequency, blcServing,
+                                 beerFrequency, beerServing, popFrequency, popServing, shotsFrequency, shotsServing) {
+    let alcoholGramsPerDay = 0;
+
+    const gramsAlcoholPerStandardDrink = 14;
+    const numDaysInYear = 365;
+
+    const binAlcoholIntake = (alcoholIntake) => {
+        if (alcoholIntake === 0) {
+            return '0';
+        } else if (alcoholIntake < 5) {
+            return '>0-5';
+        } else if (alcoholIntake < 15) {
+            return '5-15';
+        } else if (alcoholIntake < 25) {
+            return '15-25';
+        } else if (alcoholIntake < 35) {
+            return '25-35';
+        } else if (alcoholIntake < 45) {
+            return '35-45';
+        } else {
+            return '>=45';
+        }
+    };
+
+    const numIntakeDaysPerYear = (frequency) => {
+        const minDaysPerMonth = 0.5;
+        const monthsPerYear = 12;
+        const weeksInMonth = 4;
+        const daysInWeek = 7;
+
+        if (frequency === 'lt-once-a-month') {
+            return minDaysPerMonth * monthsPerYear;
+        } else if (frequency === 'once-per-month') {
+            return monthsPerYear;
+        } else if (frequency === '2-3-per-month') {
+            return 2.5 * monthsPerYear;
+        } else if (frequency === '1-2-per-week') {
+            return 1.5 * weeksInMonth * monthsPerYear;
+        } else if (frequency === '3-4-per-week') {
+            return 3.5 * weeksInMonth * monthsPerYear;
+        } else if (frequency === '5-6-per-week') {
+            return 5.5 * weeksInMonth * monthsPerYear;
+        } else if (frequency === 'daily') {
+            return daysInWeek * weeksInMonth * monthsPerYear;
+        } else {
+            return undefined;
+        }
+    };
+
+    if (alcoholUse === undefined || alcoholUse === '') {
+        return undefined;
+    }
+
+    if (alcoholUse === 'never') {
+        return binAlcoholIntake(alcoholGramsPerDay);
+    }
+
+    if (alcoholType === undefined || alcoholType.length === 0 || alcoholType.includes('')) {
+        return undefined;
+    }
+
+    if (alcoholType.includes('wine')) {
+        if (wineFrequency === '' || isNaN(wineServing)) {
+            return undefined;
+        } else {
+            alcoholGramsPerDay += (wineServing * gramsAlcoholPerStandardDrink * numIntakeDaysPerYear(wineFrequency)) / numDaysInYear;
+        }
+    }
+
+    if (alcoholType.includes('blc')) {
+        if (blcFrequency === '' || isNaN(blcServing)) {
+            return undefined;
+        } else {
+            alcoholGramsPerDay += (blcServing * gramsAlcoholPerStandardDrink * numIntakeDaysPerYear(blcFrequency)) / numDaysInYear;
+        }
+    }
+
+    if (alcoholType.includes('beer')) {
+        if (beerFrequency === '' || isNaN(beerServing)) {
+            return undefined;
+        } else {
+            alcoholGramsPerDay += (beerServing * gramsAlcoholPerStandardDrink * numIntakeDaysPerYear(beerFrequency)) / numDaysInYear;
+        }
+    }
+
+    if (alcoholType.includes('pop')) {
+        if (popFrequency === '' || isNaN(popServing)) {
+            return undefined;
+        } else {
+            alcoholGramsPerDay += (popServing * gramsAlcoholPerStandardDrink * numIntakeDaysPerYear(popFrequency)) / numDaysInYear;
+        }
+    }
+
+    if (alcoholType.includes('shots')) {
+        if (shotsFrequency === '' || isNaN(shotsServing)) {
+            return undefined;
+        } else {
+            alcoholGramsPerDay += (shotsServing * gramsAlcoholPerStandardDrink * numIntakeDaysPerYear(shotsFrequency)) / numDaysInYear;
+        }
+    }
+
+    return binAlcoholIntake(alcoholGramsPerDay);
+}
+
+function preprocessUserData(formData) {
+    const data = Object.fromEntries(formData.entries());
+    const processedData = {};
+
+    processedData.id = data['name'];
+    processedData.age = parseInt(data['age']);
+    processedData.height = preprocessHeight(parseInt(data['height-feet']), parseInt(data['height-inches']));
+    processedData.bmi_curc = calculateBMI(parseFloat(data['weight']), parseInt(data['height-feet']),
+        parseInt(data['height-inches']));
+    processedData.age_at_menarche = preprocessAgeAtMenarche(parseInt(data['menarche']));
+    processedData.parity = preprocessParity(parseInt(data['num-pregnancies']), parseInt(data['parous']),
+        parseInt(data['parity']));
+    processedData.age_first_birth = processAgeAtFirstChildBirth(parseInt(data['num-pregnancies']), parseInt(data['parous']),
+        parseInt(data['parity']), parseInt(data['age-first-child-birth']));
+    processedData.oc_ever = processHormoneContraceptiveUse(parseInt(data['hormonal-contraceptive']));
+    processedData.alcohol_intake = preprocessAlcoholIntake(data['alcohol-use'], formData.getAll('alcohol-type'),
+        data['wine-freq'], parseInt(data['wine-serving']), data['blc-freq'], parseInt(data['blc-serving']),
+        data['beer-freq'], parseInt(data['beer-serving']), data['pop-freq'], parseInt(data['pop-serving']),
+        data['shots-freq'], parseInt(data['shots-serving']));
+    processedData.bbd = processBenignBreastDisease(parseInt(data['benign-breast-disease']));
+    processedData.famhist = processFamilyHistoryBreastCancer(parseInt(data['family-history']));
+    if (processedData.age >= 50) {
+        processedData.age_at_menopause = processAgeAtMenopause(parseInt(data['menopause']), parseInt(data['age-menopause']));
+        processedData.hrt = processHormoneTreatmentUse(parseInt(data['hormone-treatment']),
+            parseInt(data['hormone-treatment-current']));
+        processedData.hrt_type = preprocessHormoneTreatmentType(parseInt(data['hormone-treatment']),
+            parseInt(data['hormone-treatment-current']), parseInt(data['hormone-treatment-type']));
+    } else {
+        processedData.oc_current = processHormoneContraceptiveCurrentUse(parseInt(data['hormonal-contraceptive-current']));
+    }
+
+    return processedData;
+}
+
 icareLitApp.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  // const name = formData.get('name');
-  const data = Object.fromEntries(formData.entries());
-  console.log(data);
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const query = preprocessUserData(formData);
+
+    console.log(query);
 });
