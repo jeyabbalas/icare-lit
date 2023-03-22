@@ -1,9 +1,9 @@
-(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))x(s);new MutationObserver(s=>{for(const t of s)if(t.type==="childList")for(const h of t.addedNodes)h.tagName==="LINK"&&h.rel==="modulepreload"&&x(h)}).observe(document,{childList:!0,subtree:!0});function b(s){const t={};return s.integrity&&(t.integrity=s.integrity),s.referrerPolicy&&(t.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?t.credentials="include":s.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function x(s){if(s.ep)return;s.ep=!0;const t=b(s);fetch(s.href,t)}})();const k="/icare-lit/assets/rose-ed9a43c9.svg",q="/icare-lit/assets/github-15128406.svg",w=document.querySelector("#app"),L=1,E=80,I=0,B=84,A=5,f=Math.max(L,I),y=Math.min(E,B)-A;w.innerHTML=`
+(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))n(a);new MutationObserver(a=>{for(const r of a)if(r.type==="childList")for(const d of r.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&n(d)}).observe(document,{childList:!0,subtree:!0});function t(a){const r={};return a.integrity&&(r.integrity=a.integrity),a.referrerPolicy&&(r.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?r.credentials="include":a.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function n(a){if(a.ep)return;a.ep=!0;const r=t(a);fetch(a.href,r)}})();const P="/icare-lit/assets/rose-ed9a43c9.svg",Y="/icare-lit/assets/github-15128406.svg",O=document.querySelector("#app"),C=1,M=80,$=0,j=84,z=5,q=Math.max(C,$),L=Math.min(M,j)-z;O.innerHTML=`
   <div id="header" class="mx-auto max-w-7xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8 bg-slate-900 rounded-b-lg">
     <div class="flex items-center justify-between">
       <div class="flex justify-start gap-2">
         <div class="flex items-center">
-          <img src="${k}" class="h-12 w-12 sm:h-16 sm:w-16 gap-2 logo vanilla" alt="rose logo" />
+          <img src="${P}" class="h-12 w-12 sm:h-16 sm:w-16 gap-2 logo vanilla" alt="rose logo" />
         </div>
         <div class="min-w-0 flex-1">
           <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:tracking-tight">iCARE-Lit</h2>
@@ -12,8 +12,8 @@
       </div>
       
       <div class="flex md:mt-0 md:ml-4 shrink-0">
-        <a href="https://github.com/jeyabbalas/icare-lit">
-          <img src="${q}" class="h-10 w-10 sm:h-12 sm:w-12 fill-current" alt="github logo" />
+        <a title="Source code" href="https://github.com/jeyabbalas/icare-lit">
+          <img src="${Y}" class="h-10 w-10 sm:h-12 sm:w-12 fill-current" alt="github logo" />
         </a>
       </div>
     </div>
@@ -62,7 +62,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <label for="age" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">What is your age?</label>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="number" name="age" id="age" min="${f}" max="${y}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
+                <input type="number" name="age" id="age" min="${q}" max="${L}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
               </div>
             </div>
             
@@ -144,7 +144,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <label for="menarche" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your first menstrual period?</label>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <input type="number" name="menarche" id="menarche" min="${f}" max="${y}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                <input type="number" name="menarche" id="menarche" min="${q}" max="${L}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
               </div>
             </div>
             
@@ -178,7 +178,7 @@
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label for="age-menopause" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your last menstrual period?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <input type="number" name="age-menopause" id="age-menopause" min="${f}" max="${y}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                  <input type="number" name="age-menopause" id="age-menopause" min="${q}" max="${L}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
                 </div>
               </div>
             </div>
@@ -193,7 +193,7 @@
               </div>
             </div>
             
-            <div id="children-container">
+            <div id="children-container" class="hidden space-y-6 sm:space-y-5">
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever had any children?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -229,7 +229,7 @@
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <label for="age-first-child-birth" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How old were you when you had your first child?</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
-                  <input type="number" name="age-first-child-birth" id="age-first-child-birth" min="${f}" max="${y}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
+                  <input type="number" name="age-first-child-birth" id="age-first-child-birth" min="${q}" max="${L}" step="1" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm">
                 </div>
               </div>
             </div>
@@ -291,11 +291,11 @@
                     <legend class="sr-only">Menopausal hormone treatment type</legend>
                     <div class="space-y-4">
                       <div class="flex items-center">
-                        <input id="hormone-treatment-type-e" name="hormone-treatment-type" type="radio" value="e" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <input id="hormone-treatment-type-e" name="hormone-treatment-type" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
                         <label for="hormone-treatment-type-e" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Estrogen prescription hormone only.</label>
                       </div>
                       <div class="flex items-center">
-                        <input id="hormone-treatment-type-c" name="hormone-treatment-type" type="radio" value="c" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                        <input id="hormone-treatment-type-c" name="hormone-treatment-type" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
                         <label for="hormone-treatment-type-c" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Combined estrogen plus progestin prescription hormones.</label>
                       </div>
                       <div class="flex items-center">
@@ -442,8 +442,8 @@
                           <label for="wine-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="wine-freq-lt-once-per-month" name="wine-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="wine-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="wine-freq-once-per-month" name="wine-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="wine-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="wine-freq-2-3-per-month" name="wine-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -500,8 +500,8 @@
                           <label for="blc-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="blc-freq-lt-once-per-month" name="blc-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="blc-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="blc-freq-once-per-month" name="blc-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="blc-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="blc-freq-2-3-per-month" name="blc-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -558,8 +558,8 @@
                           <label for="beer-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="beer-freq-lt-once-per-month" name="beer-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="beer-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="beer-freq-once-per-month" name="beer-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="beer-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="beer-freq-2-3-per-month" name="beer-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -619,8 +619,8 @@
                           <label for="pop-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="pop-freq-lt-once-per-month" name="pop-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="pop-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="pop-freq-once-per-month" name="pop-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="pop-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="pop-freq-2-3-per-month" name="pop-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -677,8 +677,8 @@
                           <label for="shots-freq-lt-one-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Less than once a month.</label>
                         </div>
                         <div class="flex items-center">
-                          <input id="shots-freq-lt-once-per-month" name="shots-freq" type="radio" value="lt-once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                          <label for="shots-freq-lt-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
+                          <input id="shots-freq-once-per-month" name="shots-freq" type="radio" value="once-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
+                          <label for="shots-freq-once-per-month" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Once a month.</label>
                         </div>
                         <div class="flex items-center">
                           <input id="shots-freq-2-3-per-month" name="shots-freq" type="radio" value="2-3-per-month" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
@@ -721,29 +721,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Have you ever smoked?</label>
-              <div class="mt-1 sm:col-span-2 sm:mt-0">
-                <fieldset class="mt-4">
-                  <legend class="sr-only">Smoking status</legend>
-                  <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                    <div class="flex items-center">
-                      <input id="smoking-yes" name="smoking" type="radio" value="1" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="smoking-yes" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Yes</label>
-                    </div>
-                    <div class="flex items-center">
-                      <input id="smoking-no" name="smoking" type="radio" value="0" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="smoking-no" class="ml-3 block text-sm font-medium leading-6 text-gray-900">No</label>
-                    </div>
-                    <div class="flex items-center">
-                      <input id="smoking-unknown" name="smoking" type="radio" value="" class="h-4 w-4 border-gray-300 text-slate-600 focus:ring-slate-600">
-                      <label for="smoking-unknown" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Don't know</label>
-                    </div>
-                  </div>
-                </fieldset>
               </div>
             </div>
             
@@ -820,4 +797,4 @@
   <div id="results" class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
     <h1>The 5-year breast cancer risk projected by iCARE-Lit is: </h1>
   </div>
-`;const c=document.getElementById("age-menopause-container"),v=document.getElementById("children-container"),a=document.getElementById("births-container"),p=document.getElementById("hormone-treatment-current-container"),g=document.getElementById("hormone-treatment-type-container"),u=document.getElementById("hormonal-contraceptive-container"),l=document.getElementById("alcohol-container"),n=document.getElementById("wine-container"),i=document.getElementById("blc-container"),o=document.getElementById("beer-container"),d=document.getElementById("pop-container"),m=document.getElementById("shots-container");document.getElementById("menopause-yes").addEventListener("change",e=>{e.target.checked&&c.classList.remove("hidden")});document.getElementById("menopause-no").addEventListener("change",e=>{e.target.checked&&!c.classList.contains("hidden")&&c.classList.add("hidden")});document.getElementById("menopause-unknown").addEventListener("change",e=>{e.target.checked&&!c.classList.contains("hidden")&&c.classList.add("hidden")});document.getElementById("num-pregnancies").addEventListener("change",e=>{e.target.value>0?v.classList.remove("hidden"):(v.classList.contains("hidden")||v.classList.add("hidden"),a.classList.contains("hidden")||a.classList.add("hidden"))});document.getElementById("parous-yes").addEventListener("change",e=>{e.target.checked&&a.classList.remove("hidden")});document.getElementById("parous-no").addEventListener("change",e=>{e.target.checked&&!a.classList.contains("hidden")&&a.classList.add("hidden")});document.getElementById("parous-unknown").addEventListener("change",e=>{e.target.checked&&!a.classList.contains("hidden")&&a.classList.add("hidden")});document.getElementById("hormone-treatment-yes").addEventListener("change",e=>{e.target.checked&&p.classList.remove("hidden")});document.getElementById("hormone-treatment-no").addEventListener("change",e=>{e.target.checked&&!p.classList.contains("hidden")&&p.classList.add("hidden")});document.getElementById("hormone-treatment-unknown").addEventListener("change",e=>{e.target.checked&&!p.classList.contains("hidden")&&p.classList.add("hidden")});document.getElementById("hormone-treatment-current-yes").addEventListener("change",e=>{e.target.checked&&g.classList.remove("hidden")});document.getElementById("hormone-treatment-current-no").addEventListener("change",e=>{e.target.checked&&!g.classList.contains("hidden")&&g.classList.add("hidden")});document.getElementById("hormone-treatment-current-unknown").addEventListener("change",e=>{e.target.checked&&!g.classList.contains("hidden")&&g.classList.add("hidden")});document.getElementById("hormonal-contraceptive-yes").addEventListener("change",e=>{e.target.checked&&u.classList.remove("hidden")});document.getElementById("hormonal-contraceptive-no").addEventListener("change",e=>{e.target.checked&&!u.classList.contains("hidden")&&u.classList.add("hidden")});document.getElementById("hormonal-contraceptive-unknown").addEventListener("change",e=>{e.target.checked&&!u.classList.contains("hidden")&&u.classList.add("hidden")});document.getElementById("alcohol-use-former").addEventListener("change",e=>{e.target.checked&&l.classList.remove("hidden")});document.getElementById("alcohol-use-current").addEventListener("change",e=>{e.target.checked&&l.classList.remove("hidden")});document.getElementById("alcohol-use-never").addEventListener("change",e=>{e.target.checked&&!l.classList.contains("hidden")&&l.classList.add("hidden")});document.getElementById("alcohol-use-unknown").addEventListener("change",e=>{e.target.checked&&!l.classList.contains("hidden")&&l.classList.add("hidden")});document.getElementById("alcohol-type-wine").addEventListener("change",e=>{e.target.checked?(n.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):n.classList.contains("hidden")||n.classList.add("hidden")});document.getElementById("alcohol-type-blc").addEventListener("change",e=>{e.target.checked?(i.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):i.classList.contains("hidden")||i.classList.add("hidden")});document.getElementById("alcohol-type-beer").addEventListener("change",e=>{e.target.checked?(o.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):o.classList.contains("hidden")||o.classList.add("hidden")});document.getElementById("alcohol-type-pop").addEventListener("change",e=>{e.target.checked?(d.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):d.classList.contains("hidden")||d.classList.add("hidden")});document.getElementById("alcohol-type-shots").addEventListener("change",e=>{e.target.checked?(m.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):m.classList.contains("hidden")||m.classList.add("hidden")});document.getElementById("alcohol-type-unknown").addEventListener("change",e=>{e.target.checked&&(document.getElementById("alcohol-type-wine").checked=!1,n.classList.contains("hidden")||n.classList.add("hidden"),document.getElementById("alcohol-type-blc").checked=!1,i.classList.contains("hidden")||i.classList.add("hidden"),document.getElementById("alcohol-type-beer").checked=!1,o.classList.contains("hidden")||o.classList.add("hidden"),document.getElementById("alcohol-type-pop").checked=!1,d.classList.contains("hidden")||d.classList.add("hidden"),document.getElementById("alcohol-type-shots").checked=!1,m.classList.contains("hidden")||m.classList.add("hidden"))});w.addEventListener("submit",e=>{e.preventDefault();const r=new FormData(e.target),b=Object.fromEntries(r.entries());console.log(b)});
+`;const v=document.getElementById("age-menopause-container"),I=document.getElementById("children-container"),o=document.getElementById("births-container"),x=document.getElementById("hormone-treatment-current-container"),w=document.getElementById("hormone-treatment-type-container"),k=document.getElementById("hormonal-contraceptive-container"),m=document.getElementById("alcohol-container"),g=document.getElementById("wine-container"),f=document.getElementById("blc-container"),y=document.getElementById("beer-container"),b=document.getElementById("pop-container"),h=document.getElementById("shots-container");document.getElementById("menopause-yes").addEventListener("change",e=>{e.target.checked&&v.classList.remove("hidden")});document.getElementById("menopause-no").addEventListener("change",e=>{e.target.checked&&!v.classList.contains("hidden")&&v.classList.add("hidden")});document.getElementById("menopause-unknown").addEventListener("change",e=>{e.target.checked&&!v.classList.contains("hidden")&&v.classList.add("hidden")});document.getElementById("num-pregnancies").addEventListener("input",e=>{parseInt(e.target.value)===0||e.target.value===""?(I.classList.contains("hidden")||I.classList.add("hidden"),o.classList.contains("hidden")||o.classList.add("hidden")):I.classList.remove("hidden")});document.getElementById("parous-yes").addEventListener("change",e=>{e.target.checked&&o.classList.remove("hidden")});document.getElementById("parous-no").addEventListener("change",e=>{e.target.checked&&!o.classList.contains("hidden")&&o.classList.add("hidden")});document.getElementById("parous-unknown").addEventListener("change",e=>{e.target.checked&&!o.classList.contains("hidden")&&o.classList.add("hidden")});document.getElementById("hormone-treatment-yes").addEventListener("change",e=>{e.target.checked&&x.classList.remove("hidden")});document.getElementById("hormone-treatment-no").addEventListener("change",e=>{e.target.checked&&!x.classList.contains("hidden")&&x.classList.add("hidden")});document.getElementById("hormone-treatment-unknown").addEventListener("change",e=>{e.target.checked&&!x.classList.contains("hidden")&&x.classList.add("hidden")});document.getElementById("hormone-treatment-current-yes").addEventListener("change",e=>{e.target.checked&&w.classList.remove("hidden")});document.getElementById("hormone-treatment-current-no").addEventListener("change",e=>{e.target.checked&&!w.classList.contains("hidden")&&w.classList.add("hidden")});document.getElementById("hormone-treatment-current-unknown").addEventListener("change",e=>{e.target.checked&&!w.classList.contains("hidden")&&w.classList.add("hidden")});document.getElementById("hormonal-contraceptive-yes").addEventListener("change",e=>{e.target.checked&&k.classList.remove("hidden")});document.getElementById("hormonal-contraceptive-no").addEventListener("change",e=>{e.target.checked&&!k.classList.contains("hidden")&&k.classList.add("hidden")});document.getElementById("hormonal-contraceptive-unknown").addEventListener("change",e=>{e.target.checked&&!k.classList.contains("hidden")&&k.classList.add("hidden")});document.getElementById("alcohol-use-former").addEventListener("change",e=>{e.target.checked&&m.classList.remove("hidden")});document.getElementById("alcohol-use-current").addEventListener("change",e=>{e.target.checked&&m.classList.remove("hidden")});document.getElementById("alcohol-use-never").addEventListener("change",e=>{e.target.checked&&!m.classList.contains("hidden")&&m.classList.add("hidden")});document.getElementById("alcohol-use-unknown").addEventListener("change",e=>{e.target.checked&&!m.classList.contains("hidden")&&m.classList.add("hidden")});document.getElementById("alcohol-type-wine").addEventListener("change",e=>{e.target.checked?(g.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):g.classList.contains("hidden")||g.classList.add("hidden")});document.getElementById("alcohol-type-blc").addEventListener("change",e=>{e.target.checked?(f.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):f.classList.contains("hidden")||f.classList.add("hidden")});document.getElementById("alcohol-type-beer").addEventListener("change",e=>{e.target.checked?(y.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):y.classList.contains("hidden")||y.classList.add("hidden")});document.getElementById("alcohol-type-pop").addEventListener("change",e=>{e.target.checked?(b.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):b.classList.contains("hidden")||b.classList.add("hidden")});document.getElementById("alcohol-type-shots").addEventListener("change",e=>{e.target.checked?(h.classList.remove("hidden"),document.getElementById("alcohol-type-unknown").checked=!1):h.classList.contains("hidden")||h.classList.add("hidden")});document.getElementById("alcohol-type-unknown").addEventListener("change",e=>{e.target.checked&&(document.getElementById("alcohol-type-wine").checked=!1,g.classList.contains("hidden")||g.classList.add("hidden"),document.getElementById("alcohol-type-blc").checked=!1,f.classList.contains("hidden")||f.classList.add("hidden"),document.getElementById("alcohol-type-beer").checked=!1,y.classList.contains("hidden")||y.classList.add("hidden"),document.getElementById("alcohol-type-pop").checked=!1,b.classList.contains("hidden")||b.classList.add("hidden"),document.getElementById("alcohol-type-shots").checked=!1,h.classList.contains("hidden")||h.classList.add("hidden"))});function W(e,s){return isNaN(e)&&isNaN(s)||isNaN(e)?void 0:(isNaN(s)&&(s=0),(e*12+s)*2.54/10)}function R(e,s,t){const n=r=>r<18.5?"<18.5":r<25?"18.5-25":r<30?"25-30":">=30";if(isNaN(s)&&isNaN(t)||isNaN(s)||(isNaN(t)&&(t=0),isNaN(e)))return;const a=s*12+t;return n(e/(a*a)*703)}function S(e){const s=t=>t<=10?"<=10":t===11?"11":t===12?"12":t===13?"13":t===14?"14":t===15?"15":">=16";if(!isNaN(e))return s(e)}function F(e,s,t){const n=a=>a===0?"0":a===1?"1":a===2?"2":">=3";if(!isNaN(e)){if(e===0)return n(0);if(!isNaN(s)){if(s===0)return n(0);if(!isNaN(t))return n(t)}}}function G(e,s,t,n){const a=r=>r<20?"<20":r<25?"20-25":r<30?"25-30":">=30";if(!(isNaN(e)||e===0||isNaN(s)||s===0||t===0||isNaN(n)))return a(n)}function T(e,s){if(!isNaN(e))return e===0?"never":isNaN(s)?void 0:s===0?"former":"current"}function _(e){if(!isNaN(e))return e}function J(e){if(!isNaN(e))return e}function K(e){if(!isNaN(e))return e}function Q(e){if(!isNaN(e))return e}function V(e,s){const t=n=>n<40?"<40":n<45?"40-45":n<50?"45-50":n<55?"50-55":">=55";if(!(isNaN(e)||e===0||isNaN(s)))return t(s)}function X(e,s,t){if(!(isNaN(e)||e===0||isNaN(s)||s===0||isNaN(t)))return t}function Z(e,s,t,n,a,r,d,E,N,B,D,A){let i=0;const c=14,p=365,H=l=>l===0?"0":l<5?">0-5":l<15?"5-15":l<25?"15-25":l<35?"25-35":l<45?"35-45":">=45",u=l=>l==="lt-once-a-month"?.5*12:l==="once-per-month"?12:l==="2-3-per-month"?2.5*12:l==="1-2-per-week"?1.5*4*12:l==="3-4-per-week"?3.5*4*12:l==="5-6-per-week"?5.5*4*12:l==="daily"?7*4*12:void 0;if(!(e===void 0||e==="")){if(e==="never")return H(i);if(!(s===void 0||s.length===0||s.includes(""))){if(s.includes("wine")){if(t===""||isNaN(n))return;i+=n*c*u(t)/p}if(s.includes("blc")){if(a===""||isNaN(r))return;i+=r*c*u(a)/p}if(s.includes("beer")){if(d===""||isNaN(E))return;i+=E*c*u(d)/p}if(s.includes("pop")){if(N===""||isNaN(B))return;i+=B*c*u(N)/p}if(s.includes("shots")){if(D===""||isNaN(A))return;i+=A*c*u(D)/p}return H(i)}}}function U(e){const s=Object.fromEntries(e.entries()),t={};return t.id=s.name,t.age=parseInt(s.age),t.height=W(parseInt(s["height-feet"]),parseInt(s["height-inches"])),t.bmi_curc=R(parseFloat(s.weight),parseInt(s["height-feet"]),parseInt(s["height-inches"])),t.age_at_menarche=S(parseInt(s.menarche)),t.parity=F(parseInt(s["num-pregnancies"]),parseInt(s.parous),parseInt(s.parity)),t.age_first_birth=G(parseInt(s["num-pregnancies"]),parseInt(s.parous),parseInt(s.parity),parseInt(s["age-first-child-birth"])),t.oc_ever=_(parseInt(s["hormonal-contraceptive"])),t.alcohol_intake=Z(s["alcohol-use"],e.getAll("alcohol-type"),s["wine-freq"],parseInt(s["wine-serving"]),s["blc-freq"],parseInt(s["blc-serving"]),s["beer-freq"],parseInt(s["beer-serving"]),s["pop-freq"],parseInt(s["pop-serving"]),s["shots-freq"],parseInt(s["shots-serving"])),t.bbd=K(parseInt(s["benign-breast-disease"])),t.famhist=Q(parseInt(s["family-history"])),t.age>=50?(t.age_at_menopause=V(parseInt(s.menopause),parseInt(s["age-menopause"])),t.hrt=T(parseInt(s["hormone-treatment"]),parseInt(s["hormone-treatment-current"])),t.hrt_type=X(parseInt(s["hormone-treatment"]),parseInt(s["hormone-treatment-current"]),parseInt(s["hormone-treatment-type"]))):t.oc_current=J(parseInt(s["hormonal-contraceptive-current"])),t}O.addEventListener("submit",e=>{e.preventDefault();const s=new FormData(e.target),t=U(s);console.log(t)});
