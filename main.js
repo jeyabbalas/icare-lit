@@ -1046,16 +1046,26 @@ function preprocessHeight(height_ft, height_in) {
     return height_cms / 10; // per iCARE-Lit definition
 }
 
-function calculateBMI(weight_lbs, height_ft, height_in) {
+function calculateBMI(weight_lbs, height_ft, height_in, underAgeFifty) {
     const binBMI = (bmi) => {
-        if (bmi < 18.5) {
-            return '<18.5';
-        } else if (bmi < 25) {
-            return '18.5-25';
-        } else if (bmi < 30) {
-            return '25-30';
+        if (underAgeFifty) {
+            if (bmi < 18.5) {
+                return '<18.5';
+            } else if (bmi < 25) {
+                return '18.5-25';
+            } else if (bmi < 30) {
+                return '25-30';
+            } else {
+                return '>=30';
+            }
         } else {
-            return '>=30';
+            if (bmi < 25) {
+                return '<25';
+            } else if (bmi < 30) {
+                return '25-30';
+            } else {
+                return '>=30';
+            }
         }
     };
 
@@ -1237,7 +1247,7 @@ function preprocessAlcoholIntake(alcoholUse, alcoholType, wineFrequency, wineSer
     let alcoholGramsPerDay = 0;
 
     const gramsAlcoholPerStandardDrink = 14;
-    const numDaysInYear = 365;
+    const numDaysInYear = 365.25;
 
     const binAlcoholIntake = (alcoholIntake) => {
         if (alcoholIntake === 0) {
@@ -1258,10 +1268,9 @@ function preprocessAlcoholIntake(alcoholUse, alcoholType, wineFrequency, wineSer
     };
 
     const numIntakeDaysPerYear = (frequency) => {
-        const minDaysPerMonth = 0.5;
+        const minDaysPerMonth = 0;
         const monthsPerYear = 12;
-        const weeksInMonth = 4;
-        const daysInWeek = 7;
+        const weeksInYear = 52.14;
 
         if (frequency === 'lt-once-a-month') {
             return minDaysPerMonth * monthsPerYear;
@@ -1270,13 +1279,13 @@ function preprocessAlcoholIntake(alcoholUse, alcoholType, wineFrequency, wineSer
         } else if (frequency === '2-3-per-month') {
             return 2.5 * monthsPerYear;
         } else if (frequency === '1-2-per-week') {
-            return 1.5 * weeksInMonth * monthsPerYear;
+            return 1.5 * weeksInYear;
         } else if (frequency === '3-4-per-week') {
-            return 3.5 * weeksInMonth * monthsPerYear;
+            return 3.5 * weeksInYear;
         } else if (frequency === '5-6-per-week') {
-            return 5.5 * weeksInMonth * monthsPerYear;
+            return 5.5 * weeksInYear;
         } else if (frequency === 'daily') {
-            return daysInWeek * weeksInMonth * monthsPerYear;
+            return numDaysInYear;
         } else {
             return undefined;
         }
@@ -1344,8 +1353,6 @@ function preprocessUserData(formData) {
     processedData.id = data['name'];
     processedData.age = parseInt(data['age']);
     processedData.height = preprocessHeight(parseInt(data['height-feet']), parseInt(data['height-inches']));
-    processedData.bmi_curc = calculateBMI(parseFloat(data['weight']), parseInt(data['height-feet']),
-        parseInt(data['height-inches']));
     processedData.age_at_menarche = preprocessAgeAtMenarche(parseInt(data['menarche']));
     processedData.parity = preprocessParity(parseInt(data['num-pregnancies']), parseInt(data['parous']),
         parseInt(data['parity']));
@@ -1359,12 +1366,16 @@ function preprocessUserData(formData) {
     processedData.bbd = processBenignBreastDisease(parseInt(data['benign-breast-disease']));
     processedData.famhist = processFamilyHistoryBreastCancer(parseInt(data['family-history']));
     if (processedData.age >= 50) {
+        processedData.bmi_curc = calculateBMI(parseFloat(data['weight']), parseInt(data['height-feet']),
+            parseInt(data['height-inches']), false);
         processedData.age_at_menopause = processAgeAtMenopause(parseInt(data['menopause']), parseInt(data['age-menopause']));
         processedData.hrt = processHormoneTreatmentUse(parseInt(data['hormone-treatment']),
             parseInt(data['hormone-treatment-current']));
         processedData.hrt_type = preprocessHormoneTreatmentType(parseInt(data['hormone-treatment']),
             parseInt(data['hormone-treatment-current']), parseInt(data['hormone-treatment-type']));
     } else {
+        processedData.bmi_curc = calculateBMI(parseFloat(data['weight']), parseInt(data['height-feet']),
+            parseInt(data['height-inches']), true);
         processedData.oc_current = processHormoneContraceptiveCurrentUse(parseInt(data['hormonal-contraceptive-current']));
     }
 
