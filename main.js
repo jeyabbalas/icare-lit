@@ -403,7 +403,7 @@ icareLitApp.innerHTML = `
             
             <div id="alcohol-container" class="hidden space-y-6 sm:space-y-5">
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please select any of the following alcoholic beverages that you have had in the past 12 months.</label>
+                <label id="alcohol-type-label" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Please select any of the following alcoholic beverages that you have had in the past 12 months.</label>
                 <div class="mt-1 sm:col-span-2 sm:mt-0">
                   <fieldset class="mt-4">
                     <legend class="sr-only">Alcohol types</legend>
@@ -445,7 +445,7 @@ icareLitApp.innerHTML = `
               <div id="wine-container" class="hidden space-y-6 sm:space-y-5">
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                   <div>
-                    <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink wine?</label>
+                    <label id="wine-freq-label" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink wine?</label>
                     <p class="text-sm text-gray-500">This includes any kind of wine or wine cooler.</p>
                   </div>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -491,7 +491,7 @@ icareLitApp.innerHTML = `
                 
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                   <div>
-                    <label for="wine-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank wine, how many servings did you drink per day?</label>
+                    <label id="wine-serving-label" for="wine-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank wine, how many servings did you drink per day?</label>
                     <p class="text-sm text-gray-500">A serving of wine is 5 ounces.</p>
                   </div>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -505,7 +505,7 @@ icareLitApp.innerHTML = `
               
               <div id="blc-container" class="hidden space-y-6 sm:space-y-5">
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink glasses of beer/lager/cider?</label>
+                  <label id="blc-freq-label" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink glasses of beer/lager/cider?</label>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
                     <fieldset class="mt-4">
                       <legend class="sr-only">Beer, lager, and cider consumption frequencies</legend>
@@ -549,7 +549,7 @@ icareLitApp.innerHTML = `
                 
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                   <div>
-                    <label for="blc-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer/lager/cider, how many servings did you drink per day?</label>
+                    <label id="blc-serving-label" for="blc-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer/lager/cider, how many servings did you drink per day?</label>
                     <p class="text-sm text-gray-500">A serving of beer/lager/cider is a 12-ounce container.</p>
                   </div>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -563,7 +563,7 @@ icareLitApp.innerHTML = `
               
               <div id="beer-container" class="hidden space-y-6 sm:space-y-5">
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink bottles of beer?</label>
+                  <label id="beer-freq-label" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink bottles of beer?</label>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
                     <fieldset class="mt-4">
                       <legend class="sr-only">Beer consumption frequencies</legend>
@@ -607,7 +607,7 @@ icareLitApp.innerHTML = `
                 
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                   <div>
-                    <label for="beer-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer, how many servings did you drink per day?</label>
+                    <label id="beer-serving-label" for="beer-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank beer, how many servings did you drink per day?</label>
                     <p class="text-sm text-gray-500">A serving of beer is a 12-ounce container.</p>
                   </div>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -622,7 +622,7 @@ icareLitApp.innerHTML = `
               <div id="pop-container" class="hidden space-y-6 sm:space-y-5">
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                   <div>
-                    <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink alcoholic pop beverages?</label>
+                    <label id="pop-freq-label" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually drink alcoholic pop beverages?</label>
                     <p class="text-sm text-gray-500">These includes wine coolers, hard soda, spiked seltzer (sparkling water), Smirnoff Ice, malt liquor, or pre-mixed cocktails.</p>
                   </div>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -668,7 +668,7 @@ icareLitApp.innerHTML = `
                 
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                   <div>
-                    <label for="pop-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank alcoholic pop beverages, how many servings did you drink per day?</label>
+                    <label id="pop-serving-label" for="pop-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank alcoholic pop beverages, how many servings did you drink per day?</label>
                     <p class="text-sm text-gray-500">A serving of beer, hard cider, wine coolers, 'hard soda', spiked sparkling water, or malt liquor is a 12-ounce container. A serving of liquor or mixed drinks is one shot or 1.5 ounces of liquor.</p>
                   </div>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -682,7 +682,7 @@ icareLitApp.innerHTML = `
               
               <div id="shots-container" class="hidden space-y-6 sm:space-y-5">
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                  <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually take shots of liquor?</label>
+                  <label id="shots-freq-label" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, how often did you usually take shots of liquor?</label>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
                     <fieldset class="mt-4">
                       <legend class="sr-only">Shots of liquor consumption frequencies</legend>
@@ -726,7 +726,7 @@ icareLitApp.innerHTML = `
                 
                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                   <div>
-                    <label for="shot-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank liquor, how many servings did you drink per day?</label>
+                    <label id="shot-serving-label" for="shot-serving" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Over the past 12 months, on the days that you drank liquor, how many servings did you drink per day?</label>
                     <p class="text-sm text-gray-500">A serving of liquor or mixed drinks is one shot or 1.5 ounces of liquor.</p>
                   </div>
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -933,12 +933,34 @@ document.getElementById('hormonal-contraceptive-unknown').addEventListener('chan
 document.getElementById('alcohol-use-former').addEventListener('change', (event) => {
     if (event.target.checked) {
         alcoholContainer.classList.remove('hidden');
+        document.getElementById('alcohol-type-label').innerHTML = 'Please select any of the following alcoholic beverages that you had in the 12 months <em>before</em> you stopped drinking.';
+        document.getElementById('wine-freq-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, how often did you usually drink wine?'
+        document.getElementById('wine-serving-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, on the days that you drank wine, how many servings did you drink per day?';
+        document.getElementById('blc-freq-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, how often did you usually drink glasses of beer/lager/cider?';
+        document.getElementById('blc-serving-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, on the days that you drank beer/lager/cider, how many servings did you drink per day?';
+        document.getElementById('beer-freq-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, how often did you usually drink bottles of beer?';
+        document.getElementById('beer-serving-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, on the days that you drank beer, how many servings did you drink per day?';
+        document.getElementById('pop-freq-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, how often did you usually drink alcoholic pop beverages?';
+        document.getElementById('pop-serving-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, on the days that you drank alcoholic pop beverages, how many servings did you drink per day?';
+        document.getElementById('shots-freq-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, how often did you usually take shots of liquor?';
+        document.getElementById('shot-serving-label').innerHTML = 'Over the 12 months <em>before</em> you stopped drinking, on the days that you drank liquor, how many servings did you drink per day?';
     }
 });
 
 document.getElementById('alcohol-use-current').addEventListener('change', (event) => {
     if (event.target.checked) {
         alcoholContainer.classList.remove('hidden');
+        document.getElementById('alcohol-type-label').innerHTML = 'Please select any of the following alcoholic beverages that you have had in the past 12 months.';
+        document.getElementById('wine-freq-label').innerHTML = 'Over the past 12 months, how often did you usually drink wine?';
+        document.getElementById('wine-serving-label').innerHTML = 'Over the past 12 months, on the days that you drank wine, how many servings did you drink per day?';
+        document.getElementById('blc-freq-label').innerHTML = 'Over the past 12 months, how often did you usually drink glasses of beer/lager/cider?';
+        document.getElementById('blc-serving-label').innerHTML = 'Over the past 12 months, on the days that you drank beer/lager/cider, how many servings did you drink per day?';
+        document.getElementById('beer-freq-label').innerHTML = 'Over the past 12 months, how often did you usually drink bottles of beer?';
+        document.getElementById('beer-serving-label').innerHTML = 'Over the past 12 months, on the days that you drank beer, how many servings did you drink per day?';
+        document.getElementById('pop-freq-label').innerHTML = 'Over the past 12 months, how often did you usually drink alcoholic pop beverages?';
+        document.getElementById('pop-serving-label').innerHTML = 'Over the past 12 months, on the days that you drank alcoholic pop beverages, how many servings did you drink per day?';
+        document.getElementById('shots-freq-label').innerHTML = 'Over the past 12 months, how often did you usually take shots of liquor?';
+        document.getElementById('shot-serving-label').innerHTML = 'Over the past 12 months, on the days that you drank liquor, how many servings did you drink per day?';
     }
 });
 
@@ -1009,7 +1031,6 @@ document.getElementById('alcohol-type-shots').addEventListener('change', (event)
     }
 });
 
-//input id="alcohol-type-unknown"
 document.getElementById('alcohol-type-unknown').addEventListener('change', (event) => {
     if (event.target.checked) {
         document.getElementById('alcohol-type-wine').checked = false;
