@@ -4,6 +4,7 @@ import githubIcon from './github.svg'
 
 
 const icareLitApp = document.querySelector('#app');
+const pyodideWorker = new Worker('webWorker.js');
 
 const minMortalityAge = 1;
 const maxMortalityAge = 80;
