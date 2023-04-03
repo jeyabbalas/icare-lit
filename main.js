@@ -1,6 +1,8 @@
 import './style.css'
 import roseIcon from './rose.svg'
 import githubIcon from './github.svg'
+import { select } from 'd3';
+import { slider, densityPlot, boxPlot, beeswarmPlot } from './plots';
 
 
 const icareLitApp = document.querySelector('#app');
