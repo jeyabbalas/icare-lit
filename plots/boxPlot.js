@@ -63,7 +63,7 @@ export function boxPlot() {
         const tooltip = selection.selectAll('div.tooltip')
             .data([null])
             .join('div')
-            .attr('class', 'tooltip')
+            .attr('class', 'p-2 text-white rounded-md border border-white border-opacity-50 shadow-sm pointer-events-none -translate-x-1/2 -translate-y-full font-sans text-xs bg-black bg-opacity-60 transition-opacity duration-200 ease-out transition-border-color duration-100 ease-out backdrop-blur-md')
             .style('position', 'absolute')
             .style('opacity', 0);
 
