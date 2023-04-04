@@ -11,13 +11,14 @@ export function slider() {
 
   const slider = (selection) => {
     selection
-      .style('font-family', 'sans-serif');
+      .attr('class', 'accent-slate-600 py-2 sm:py-4');
 
     selection
       .selectAll('label')
       .data([null])
       .join('label')
       .attr('for', id)
+      .attr('class', 'pr-2')
       .text(labelText);
 
     selection
@@ -45,6 +46,7 @@ export function slider() {
       .data([null])
       .join('output')
       .attr('id', id)
+      .attr('class', 'pl-2 sm:pl-4')
       .text(value);
   };
 

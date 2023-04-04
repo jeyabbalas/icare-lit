@@ -2,6 +2,7 @@ import {
     range,
     extent,
     scaleLinear,
+    select,
     axisTop
 } from 'd3';
 
@@ -23,6 +24,7 @@ export function beeswarmPlot() {
   let plotPadding = 15;
   let fontSize = 15;
   let removeAxis = false;
+  let markerText = 'Value';
 
   /*
     ISC License
@@ -97,8 +99,8 @@ export function beeswarmPlot() {
       .attr('font-size', fontSize);
 
     let xRange = extent(data);
-    xRange[0] = xMin ? xMin : xRange[0];
-    xRange[1] = xMax ? xMax : xRange[1];
+    xRange[0] = xMin ?? xRange[0];
+    xRange[1] = xMax ?? xRange[1];
 
     const x = scaleLinear()
       .domain(xRange)
@@ -108,18 +110,41 @@ export function beeswarmPlot() {
       .map(d => d + margin.top + plotPadding);
 
     svg
-      .selectAll('circle')
+      .selectAll('g.marker')
       .data(range(data.length))
-      .join('circle')
-      .attr('cx', (d) => x(data[d]))
-      .attr('cy', (d) => y[d])
-      .attr('r', radius)
-      .attr('fill', color)
-      .attr('opacity', opacity)
-      .attr('stroke', 'black')
-      .attr('stroke-width', strokeWidth)
-      .append("title")
-      .text((d) => `Value:\n${data[d]}`);
+      .join('g')
+      .attr('class', 'marker')
+      .attr('transform', (d) => `translate(${x(data[d])}, ${y[d]})`)
+      .each(function (d) {
+        const group = select(this);
+
+        group
+          .append('circle')
+          .attr('r', radius)
+          .attr('fill', color)
+          .attr('opacity', opacity)
+          .attr('stroke', 'black')
+          .attr('stroke-width', strokeWidth);
+
+        const boxWidth = 7 * markerText.length + 25;
+
+        group
+          .append('rect')
+          .attr('x', radius - (boxWidth / 2))
+          .attr('y', radius + 5)
+          .attr('width', boxWidth)
+          .attr('height', 20)
+          .attr('fill', 'white')
+          .attr('stroke', 'black')
+          .attr('stroke-width', strokeWidth);
+
+        group
+          .append('text')
+          .attr('x', radius - (boxWidth / 2) + 5)
+          .attr('y', radius + 20)
+          .attr('font-size', '12px')
+          .text(`${markerText}: ${data[d].toFixed(5)}`);
+      });
 
     if (!removeAxis) {
       svg
@@ -142,18 +167,6 @@ export function beeswarmPlot() {
           .text(xLabel)
           .style('font-size', fontSize * (3/4));
       }
-    }
-
-    if (title) {
-      svg
-        .selectAll('.title')
-        .data([null])
-        .join('text')
-        .attr('class', 'title')
-        .text(title)
-        .attr('text-anchor', 'middle')
-        .attr('x',  width / 2)
-        .attr('y', margin.top / 3);
     }
   }
 
@@ -219,6 +232,10 @@ export function beeswarmPlot() {
 
   beeswarmPlot.removeAxis = function (_) {
     return arguments.length ? ((removeAxis = _), beeswarmPlot) : removeAxis;
+  }
+
+  beeswarmPlot.markerText = function (_) {
+    return arguments.length ? ((markerText = _), beeswarmPlot) : markerText;
   }
 
   return beeswarmPlot;

@@ -15,6 +15,7 @@ export function boxPlot() {
     let data;
     let xMin;
     let xMax;
+    let vLine;
     let xLabel;
     let title;
     let boxWidth;
@@ -41,8 +42,8 @@ export function boxPlot() {
             .attr('font-size', fontSize);
 
         let xRange = extent(data);
-        xRange[0] = xMin ? xMin : xRange[0];
-        xRange[1] = xMax ? xMax : xRange[1];
+        xRange[0] = xMin ?? xRange[0];
+        xRange[1] = xMax ?? xRange[1];
 
         const x = scaleLinear()
             .domain(xRange)
@@ -199,6 +200,20 @@ export function boxPlot() {
             }
         }
 
+        if (vLine !== undefined) {
+            svg
+                .selectAll('#vLine')
+                .data([null])
+                .join('line')
+                .attr('id', 'vLine')
+                .attr('x1', x(vLine))
+                .attr('y1', height / 2 - boxWidth / 2)
+                .attr('x2', x(vLine))
+                .attr('y2', height / 2 + boxWidth / 2)
+                .attr('stroke', 'red')
+                .attr('stroke-width', 1.5);
+        }
+
         if (title) {
             svg
                 .selectAll('.title')
@@ -234,6 +249,10 @@ export function boxPlot() {
 
     boxPlot.xMax = function (_) {
         return arguments.length ? ((xMax = +_), boxPlot) : xMax;
+    }
+
+    boxPlot.vLine = function (_) {
+        return arguments.length ? ((vLine = +_), boxPlot) : vLine;
     }
 
     boxPlot.xLabel = function (_) {

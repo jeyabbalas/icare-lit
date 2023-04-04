@@ -22,6 +22,7 @@ export function densityPlot() {
     let xLabel;
     let title;
     let yMax;
+    let vLine;
     let numBins = 40;
     let bandwidth;
     let color = 'rgb(122, 255, 248, 0.7)';
@@ -61,8 +62,8 @@ export function densityPlot() {
             .attr('font-size', fontSize);
 
         let xRange = extent(data);
-        xRange[0] = xMin ? xMin : xRange[0];
-        xRange[1] = xMax ? xMax : xRange[1];
+        xRange[0] = xMin ?? xRange[0];
+        xRange[1] = xMax ?? xRange[1];
 
         const x = scaleLinear()
             .domain(xRange)
@@ -198,6 +199,22 @@ export function densityPlot() {
             .text(xLabel)
             .style('font-size', fontSize * (3 / 4));
 
+        if (vLine !== undefined) {
+            svg
+                .selectAll('.vLine')
+                .data([null])
+                .join('line')
+                .attr('class', 'vLine')
+                .attr('x1', x(vLine))
+                .attr('y1', y(0))
+                .attr('x2', x(vLine))
+                .attr('y2', y(yMax))
+                .attr('stroke', 'red')
+                .attr('stroke-width', 1.5)
+                .attr('stroke-linejoin', 'round')
+                .attr('opacity', opacity);
+        }
+
         svg
             .selectAll('.title')
             .data([null])
@@ -243,6 +260,10 @@ export function densityPlot() {
 
     densityPlot.yMax = function (_) {
         return arguments.length ? ((yMax = +_), densityPlot) : yMax;
+    }
+
+    densityPlot.vLine = function (_) {
+        return arguments.length ? ((vLine = +_), densityPlot) : vLine;
     }
 
     densityPlot.numBins = function (_) {

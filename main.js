@@ -812,7 +812,8 @@ icareLitApp.innerHTML = `
     </div>
   </div>
   
-  <div id="results" class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6 lg:mb-8 border rounded-lg">
+    <div id="results" class="w-full mt-4 px-4 sm:px-6 lg:px-8"></div>
   </div>
 `
 
@@ -1407,20 +1408,25 @@ function preprocessUserData(formData) {
     return processedData;
 }
 
-function plotResults(resultsContainer, results) {
+function plotResults(resultsContainer, results, profileName) {
+    resultsContainer.innerHTML = `<h1 class="text-xl px-4 py-2 sm:py-4 lg:py-6">${profileName}'s estimated absolute risk (iCARE-Lit): ${results.profileRisk.toFixed(5)}</h1>`;
+
     const densityPlotHeight = 300;
     const boxPlotHeight = 100;
-    const beeswarmPlotHeight = 200;
-    const width = 1000;
+    const beeswarmPlotHeight = 75;
+    const width = resultsContainer.clientWidth;
     const margin = {
-        left: 70,
+        left: 50,
         right: 10
     };
-    const xMin = 30;
-    const xMax = 100;
-    const defaultBandwidth = 7.0;
+    const xMin = 0 - 0.02;
+    const xMax = Math.max(0.18, results.profileRisk) + 0.02;
+    const defaultBandwidth = 7;
+    const bandwidthScale = 1e5;
 
     const chartContainer = select(resultsContainer);
+
+    chartContainer.attr('class', 'pr-10 py-4')
 
     const sliderContainer = chartContainer
         .append('div')
@@ -1435,13 +1441,14 @@ function plotResults(resultsContainer, results) {
             bottom: 50,
             left: margin.left,
         })
-        .data(results.data)
+        .data(results.populationRisks)
         .xMin(xMin)
         .xMax(xMax)
-        .yMax(0.045)
-        .xLabel('Time between eruptions (minutes) →')
-        .title('Time between eruptions of Old Faithful')
-        .bandwidth(defaultBandwidth);
+        .yMax(40)
+        .vLine(results.profileRisk)
+        .xLabel('Absolute risk →')
+        .title('Distribution of absolute risk of breast cancer for the US population')
+        .bandwidth(defaultBandwidth / bandwidthScale);
 
     const boxPlotObject = boxPlot()
         .width(width)
@@ -1452,11 +1459,12 @@ function plotResults(resultsContainer, results) {
             bottom: 0,
             left: margin.left,
         })
-        .data(results.data)
+        .data(results.populationRisks)
         .xMin(xMin)
         .xMax(xMax)
+        .vLine(results.profileRisk)
         .boxWidth(30)
-        .radius(5)
+        .radius(1)
         .hoverOffsetX(80)
         .hoverOffsetY(100)
         .removeAxis(true);
@@ -1465,16 +1473,18 @@ function plotResults(resultsContainer, results) {
         .width(width)
         .height(beeswarmPlotHeight)
         .margin({
-            top: 0,
+            top: 5,
             right: margin.right,
             bottom: 0,
             left: margin.left,
         })
-        .data(results.data)
+        .data([results.profileRisk])
         .xMin(xMin)
         .xMax(xMax)
-        .radius(5)
+        .radius(7)
         .markerPadding(2)
+        .markerText(`${profileName}'s estimated absolute risk`)
+        .color('#FF0000')
         .plotPadding(7)
         .removeAxis(true);
 
@@ -1487,11 +1497,11 @@ function plotResults(resultsContainer, results) {
             .id('bandwidth')
             .labelText('Bandwidth: ')
             .min(1)
-            .max(20)
-            .step(0.1)
-            .value(7)
+            .max(50)
+            .step(1)
+            .value(defaultBandwidth)
             .on('change', (value) => {
-                chartContainer.call(densityPlotObject.bandwidth(value));
+                chartContainer.call(densityPlotObject.bandwidth(value / bandwidthScale));
             })
     );
 }
@@ -1508,24 +1518,14 @@ icareLitApp.addEventListener('submit', (event) => {
     const formData = new FormData(event.target);
     const query = preprocessUserData(formData);
 
+    pyodideWorker.postMessage(query);
+
     console.log(query);
     const results = {};
-    results.data = [
-        79, 54, 74, 62, 85, 55, 88, 85, 51, 85, 54, 84, 78, 47, 83, 52, 62, 84, 52, 79, 51, 47,
-        78, 69, 74, 83, 55, 76, 78, 79, 73, 77, 66, 80, 74, 52, 48, 80, 59, 90, 80, 58, 84, 58,
-        73, 83, 64, 53, 82, 59, 75, 90, 54, 80, 54, 83, 71, 64, 77, 81, 59, 84, 48, 82, 60, 92,
-        78, 78, 65, 73, 82, 56, 79, 71, 62, 76, 60, 78, 76, 83, 75, 82, 70, 65, 73, 88, 76, 80,
-        48, 86, 60, 90, 50, 78, 63, 72, 84, 75, 51, 82, 62, 88, 49, 83, 81, 47, 84, 52, 86, 81,
-        75, 59, 89, 79, 59, 81, 50, 85, 59, 87, 53, 69, 77, 56, 88, 81, 45, 82, 55, 90, 45, 83,
-        56, 89, 46, 82, 51, 86, 53, 79, 81, 60, 82, 77, 76, 59, 80, 49, 96, 53, 77, 77, 65, 81,
-        71, 70, 81, 93, 53, 89, 45, 86, 58, 78, 66, 76, 63, 88, 52, 93, 49, 57, 77, 68, 81, 81,
-        73, 50, 85, 74, 55, 77, 83, 83, 51, 78, 84, 46, 83, 55, 81, 57, 76, 84, 77, 81, 87, 77,
-        51, 78, 60, 82, 91, 53, 78, 46, 77, 84, 49, 83, 71, 80, 49, 75, 64, 76, 53, 94, 55, 76,
-        50, 82, 54, 75, 78, 79, 78, 78, 70, 79, 70, 54, 86, 50, 90, 54, 54, 77, 79, 64, 75, 47,
-        86, 63, 85, 82, 57, 82, 67, 74, 54, 83, 73, 73, 88, 80, 71, 83, 56, 79, 78, 84, 58, 83,
-        43, 60, 75, 81, 46, 90, 46, 74
+    results.populationRisks = [0.06268705621300674,0.06985544781675102,0.06420716781315527,0.06357496275800009,0.09034930355983407,0.07187698895796937,0.09116516578745766,0.0842421691113666,0.08432320731015194,0.06436679294493725,0.11134636825220658,0.0925365829768286,0.09284563317523976,0.12388874031357318,0.11498805883255396,0.06058540553788736,0.07662170963658609,0.08801284021759458,0.10086168942994496,0.0866820984796862,0.10469033809012741,0.0807324646897301,0.09570231792701187,0.07637821535429662,0.19732217505432997,0.057142772069325797,0.07789780952212431,0.08545423514611636,0.13042154130912745,0.06717185640670569,0.12380196431974635,0.10740505086998156,0.10099976554935523,0.08149035800961656,0.21847356767084483,0.06687595974605469,0.08727434369365632,0.08742240518327732,0.07481986638931754,0.08089184494820913,0.10625724467379918,0.0613898540394232,0.11483569256637757,0.0658658814391023,0.06890007597880737,0.053023256620995704,0.1129479287558172,0.09672002882609736,0.09695617459091843,0.07621741491175424,0.12479918753451338,0.05810084943331084,0.10351801157048879,0.06869563095048498,0.09803622469521568,0.062017234933736926,0.08802732200538639,0.11815488401369689,0.08689136459428051,0.1894759157036423,0.07328106218584247,0.11315580703752147,0.15232412313922275,0.1096215977416084,0.05146163849630005,0.10462962432390345,0.07699540565432719,0.1465076494525544,0.15596927786487894,0.07791559719293763,0.10601803466626178,0.0813172186766127,0.06961116682044834,0.11327866674641324,0.11321250416027266,0.09909511972459945,0.08441436801349021,0.13761319950001702,0.04777095797774448,0.09333318238503766,0.09018324972702861,0.09015606571249256,0.17049175851455262,0.08554036853379748,0.15017600703564815,0.1995461427234165,0.05538729348148224,0.05471910916172543,0.055662476404608155,0.07245985036186597,0.14018733557247168,0.13695773643732662,0.07444921813524527,0.10060324753972895
     ];
-    plotResults(resultsDiv, results);
+    results.profileRisk = 0.09737466832126535;
+    plotResults(resultsDiv, results, query.id);
 
     resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
