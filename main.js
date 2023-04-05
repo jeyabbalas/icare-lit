@@ -1409,9 +1409,12 @@ function preprocessUserData(formData) {
 }
 
 function plotResults(resultsContainer, results, profileName) {
+    const populationRisks = results.reference_risks[0].population_risks;
+    const profileRisk = results.profile[0].risk_estimates;
+
     resultsContainer.innerHTML = `
     <div>
-      <h1 class="text-lg px-4 pt-2 sm:pt-4 lg:pt-6">${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${results.profileRisk.toFixed(5)}</span></h1>
+      <h1 class="text-lg px-4 pt-2 sm:pt-4 lg:pt-6">${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${profileRisk.toFixed(5)}</span></h1>
       <h1 class="text-lg px-4 pt-4 pb-2 sm:pb-4 lg:pb-6">${profileName}'s estimated 5-year absolute risk of breast cancer compared to the US population:</h1>
     </div>
     `;
@@ -1422,10 +1425,10 @@ function plotResults(resultsContainer, results, profileName) {
     const width = resultsContainer.clientWidth;
     const margin = {
         left: 50,
-        right: 10
+        right: 20
     };
-    const xMin = 0 - 0.02;
-    const xMax = Math.max(0.18, results.profileRisk) + 0.02;
+    const xMin = -0.002;
+    const xMax = Math.max(0.01, profileRisk);
     const defaultBandwidth = 7;
     const bandwidthScale = 1e5;
 
@@ -1446,11 +1449,11 @@ function plotResults(resultsContainer, results, profileName) {
             bottom: 50,
             left: margin.left,
         })
-        .data(results.populationRisks)
+        .data(populationRisks)
         .xMin(xMin)
         .xMax(xMax)
-        .yMax(40)
-        .vLine(results.profileRisk)
+        .yMax(600)
+        .vLine(profileRisk)
         .xLabel('Absolute risk →')
         .title('Distribution of the 5-year absolute risk of breast cancer in the US population')
         .bandwidth(defaultBandwidth / bandwidthScale);
@@ -1464,10 +1467,10 @@ function plotResults(resultsContainer, results, profileName) {
             bottom: 0,
             left: margin.left,
         })
-        .data(results.populationRisks)
+        .data(populationRisks)
         .xMin(xMin)
         .xMax(xMax)
-        .vLine(results.profileRisk)
+        .vLine(profileRisk)
         .boxWidth(30)
         .radius(1)
         .hoverOffsetX(80)
@@ -1483,7 +1486,7 @@ function plotResults(resultsContainer, results, profileName) {
             bottom: 0,
             left: margin.left,
         })
-        .data([results.profileRisk])
+        .data([profileRisk])
         .xMin(xMin)
         .xMax(xMax)
         .radius(7)
@@ -1602,19 +1605,13 @@ icareLitApp.addEventListener('submit', (event) => {
     pyodideWorker.onmessage = (event) => {
         const results = event.data;
         console.log(results);
+        results.profileRisk = 0.01;
 
+        plotResults(resultsDiv, results, query.id);
+        resultsDiv.scrollIntoView({behavior: 'smooth', block: 'start'});
+        submitButton.innerHTML = "Estimate risk";
+        submitButton.classList.remove("cursor-not-allowed");
+        submitButton.disabled = false;
     };
 
-    results.populationRisks = [0.06268705621300674, 0.06985544781675102, 0.06420716781315527, 0.06357496275800009, 0.09034930355983407, 0.07187698895796937, 0.09116516578745766, 0.0842421691113666, 0.08432320731015194, 0.06436679294493725, 0.11134636825220658, 0.0925365829768286, 0.09284563317523976, 0.12388874031357318, 0.11498805883255396, 0.06058540553788736, 0.07662170963658609, 0.08801284021759458, 0.10086168942994496, 0.0866820984796862, 0.10469033809012741, 0.0807324646897301, 0.09570231792701187, 0.07637821535429662, 0.19732217505432997, 0.057142772069325797, 0.07789780952212431, 0.08545423514611636, 0.13042154130912745, 0.06717185640670569, 0.12380196431974635, 0.10740505086998156, 0.10099976554935523, 0.08149035800961656, 0.21847356767084483, 0.06687595974605469, 0.08727434369365632, 0.08742240518327732, 0.07481986638931754, 0.08089184494820913, 0.10625724467379918, 0.0613898540394232, 0.11483569256637757, 0.0658658814391023, 0.06890007597880737, 0.053023256620995704, 0.1129479287558172, 0.09672002882609736, 0.09695617459091843, 0.07621741491175424, 0.12479918753451338, 0.05810084943331084, 0.10351801157048879, 0.06869563095048498, 0.09803622469521568, 0.062017234933736926, 0.08802732200538639, 0.11815488401369689, 0.08689136459428051, 0.1894759157036423, 0.07328106218584247, 0.11315580703752147, 0.15232412313922275, 0.1096215977416084, 0.05146163849630005, 0.10462962432390345, 0.07699540565432719, 0.1465076494525544, 0.15596927786487894, 0.07791559719293763, 0.10601803466626178, 0.0813172186766127, 0.06961116682044834, 0.11327866674641324, 0.11321250416027266, 0.09909511972459945, 0.08441436801349021, 0.13761319950001702, 0.04777095797774448, 0.09333318238503766, 0.09018324972702861, 0.09015606571249256, 0.17049175851455262, 0.08554036853379748, 0.15017600703564815, 0.1995461427234165, 0.05538729348148224, 0.05471910916172543, 0.055662476404608155, 0.07245985036186597, 0.14018733557247168, 0.13695773643732662, 0.07444921813524527, 0.10060324753972895
-    ];
-    results.profileRisk = 0.09737466832126535;
-
-
-    plotResults(resultsDiv, results, query.id);
-
-    resultsDiv.scrollIntoView({behavior: 'smooth', block: 'start'});
-
-    submitButton.innerHTML = "Estimate risk";
-    submitButton.classList.remove("cursor-not-allowed");
-    submitButton.disabled = false;
 });
