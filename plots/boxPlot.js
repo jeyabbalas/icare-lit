@@ -71,12 +71,12 @@ export function boxPlot() {
         svg
             .on('mouseover', function (event) {
                 const message = `
-        Minimum: ${q0.toFixed(2)}<br>
-        25th percentile: ${q1.toFixed(2)}<br>
-        Median: ${q2.toFixed(2)}<br>
-        75th percentile: ${q3.toFixed(2)}<br>
-        Maximum: ${q4.toFixed(2)}<br>
-        Inter-quartile range: ${iqr.toFixed(2)}
+        Minimum: ${q0.toFixed(5)}<br>
+        25th percentile: ${q1.toFixed(5)}<br>
+        Median: ${q2.toFixed(5)}<br>
+        75th percentile: ${q3.toFixed(5)}<br>
+        Maximum: ${q4.toFixed(5)}<br>
+        Inter-quartile range: ${iqr.toFixed(5)}
         `;
                 tooltip
                     .style('opacity', 1)
