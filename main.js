@@ -6,7 +6,7 @@ import {slider, densityPlot, boxPlot, beeswarmPlot} from './plots';
 
 
 const icareLitApp = document.querySelector('#app');
-const pyodideWorker = new Worker('webWorker.js');
+const pyodideWorker = new Worker(new URL('./webWorker.js', import.meta.url));
 
 const minMortalityAge = 1;
 const maxMortalityAge = 80;
