@@ -1409,7 +1409,12 @@ function preprocessUserData(formData) {
 }
 
 function plotResults(resultsContainer, results, profileName) {
-    resultsContainer.innerHTML = `<h1 class="text-xl px-4 py-2 sm:py-4 lg:py-6">${profileName}'s estimated absolute risk (iCARE-Lit): ${results.profileRisk.toFixed(5)}</h1>`;
+    resultsContainer.innerHTML = `
+    <div>
+      <h1 class="text-lg px-4 pt-2 sm:pt-4 lg:pt-6">${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${results.profileRisk.toFixed(5)}</span></h1>
+      <h1 class="text-lg px-4 pt-4 pb-2 sm:pb-4 lg:pb-6"> Here's how ${profileName}'s estimated 5-year absolute risk compares to the US population:</h1>
+    </div>
+    `;
 
     const densityPlotHeight = 300;
     const boxPlotHeight = 100;
@@ -1447,7 +1452,7 @@ function plotResults(resultsContainer, results, profileName) {
         .yMax(40)
         .vLine(results.profileRisk)
         .xLabel('Absolute risk →')
-        .title('Distribution of absolute risk of breast cancer for the US population')
+        .title('Distribution of the 5-year absolute risk of breast cancer in the US population')
         .bandwidth(defaultBandwidth / bandwidthScale);
 
     const boxPlotObject = boxPlot()
@@ -1504,6 +1509,79 @@ function plotResults(resultsContainer, results, profileName) {
                 chartContainer.call(densityPlotObject.bandwidth(value / bandwidthScale));
             })
     );
+
+    const downloadButtonsContainer = chartContainer
+        .append('div')
+        .attr('class', 'flex flex-row justify-center items-center mt-4');
+
+    const downloadPlotButton = downloadButtonsContainer
+        .append('button')
+        .attr('class', 'rounded-md border border-transparent bg-slate-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 py-2 px-4 mr-2')
+        .text('Download plot as PNG');
+
+    const downloadDataButton = downloadButtonsContainer
+        .append('button')
+        .attr('class', 'rounded-md border border-transparent bg-slate-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 py-2 px-4')
+        .text('Download results as JSON');
+
+    downloadPlotButton.on('click', () => {
+        const svgElements = select(resultsContainer).selectAll('svg');
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        // Convert SVG to Image
+        function svgToImage(svgString) {
+            return new Promise((resolve) => {
+                const image = new Image();
+                const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+                const svgUrl = URL.createObjectURL(svgBlob);
+
+                image.onload = () => {
+                    resolve(image);
+                };
+
+                image.src = svgUrl;
+            });
+        }
+
+        // Get all SVG elements as strings
+        const svgStrings = svgElements.nodes().map(node => new XMLSerializer().serializeToString(node));
+
+        // Convert SVG strings to Images
+        Promise.all(svgStrings.map(svgString => svgToImage(svgString)))
+            .then(images => {
+                let yOffset = 0;
+                canvas.width = Math.max(...images.map(image => image.width));
+                canvas.height = images.reduce((totalHeight, image) => totalHeight + image.height, 0);
+                context.fillStyle = 'white';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw images on the canvas
+                for (const image of images) {
+                    context.drawImage(image, 0, yOffset);
+                    yOffset += image.height;
+                }
+
+                // Save the combined canvas as PNG
+                const pngUrl = canvas.toDataURL('image/png');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pngUrl;
+                downloadLink.download = `icare-lit_risk_plot_${profileName}.png`;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+    });
+
+    downloadDataButton.on('click', () => {
+        const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(results, null, 2));
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute('href', dataStr);
+        downloadAnchorNode.setAttribute('download', `icare-lit_output_${profileName}.json`);
+        document.body.appendChild(downloadAnchorNode); // for firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    });
 }
 
 icareLitApp.addEventListener('submit', (event) => {
