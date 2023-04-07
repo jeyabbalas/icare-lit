@@ -60,6 +60,7 @@ export function boxPlot() {
         const dataMax = max(data);
         q4 = dataMax < q4 ? dataMax : q4;
         const outliers = data.filter(d => (d < q0) || (d > q4));
+        const mean = data.reduce((a, b) => a + b, 0) / data.length;
 
         const tooltip = selection.selectAll('div.tooltip')
             .data([null])
@@ -76,7 +77,8 @@ export function boxPlot() {
         Median: ${q2.toFixed(5)}<br>
         75th percentile: ${q3.toFixed(5)}<br>
         Maximum: ${q4.toFixed(5)}<br>
-        Inter-quartile range: ${iqr.toFixed(5)}
+        Inter-quartile range: ${iqr.toFixed(5)}<br>
+        Mean: ${mean.toFixed(5)}
         `;
                 tooltip
                     .style('opacity', 1)
