@@ -70,12 +70,13 @@ export function densityPlot() {
             .range([margin.left, width - margin.right]);
 
         const thresholds = x.ticks(numBins);
+        const density = kde(epanechnikov(bandwidth), thresholds, data);
+        const yMaxValue = yMax ?? Math.max(...density.map(d => d[1]));
 
         const y = scaleLinear()
-            .domain([0, yMax ? yMax : estimateYMax(x, thresholds, data)])
+            .domain([0, yMaxValue])
             .range([height - margin.bottom, margin.top]);
 
-        const density = kde(epanechnikov(bandwidth), thresholds, data);
         // close the curve at the x-axis (y=0) so color fill is complete.
         if (density[0][1] !== 0) {
             density.unshift([density[0][0], 0]);
@@ -208,7 +209,7 @@ export function densityPlot() {
                 .attr('x1', x(vLine))
                 .attr('y1', y(0))
                 .attr('x2', x(vLine))
-                .attr('y2', y(yMax))
+                .attr('y2', y(yMaxValue))
                 .attr('stroke', 'red')
                 .attr('stroke-width', 1.5)
                 .attr('stroke-linejoin', 'round')

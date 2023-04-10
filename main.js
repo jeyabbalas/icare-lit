@@ -1408,13 +1408,26 @@ function preprocessUserData(formData) {
     return processedData;
 }
 
+function getBandwidthValues(numBandwidths, data) {
+    const bandwidthValues = [];
+    const bandwidthMin = 0.001 * (Math.max(...data) - Math.min(...data));
+    const bandwidthMax = Math.max(...data) - Math.min(...data);
+
+    for (let i = 0; i < numBandwidths; i++) {
+        const logBandwidth = Math.log10(bandwidthMin) + ((Math.log10(bandwidthMax) - Math.log10(bandwidthMin)) * i) / (numBandwidths - 1);
+        bandwidthValues.push(Math.pow(10, logBandwidth));
+    }
+
+    return bandwidthValues;
+}
+
 function plotResults(resultsContainer, results, profileName) {
-    const populationRisks = results.reference_risks[0].population_risks;
-    const profileRisk = results.profile[0].risk_estimates;
+    const populationRisks = (results.reference_risks[0].population_risks).map(risk => risk * 100.0);
+    const profileRisk = results.profile[0].risk_estimates * 100.0;
 
     resultsContainer.innerHTML = `
     <div>
-      <h1 class="text-lg px-4 pt-2 sm:pt-4 lg:pt-6">${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${profileRisk.toFixed(5)}</span></h1>
+      <h1 class="text-lg px-4 pt-2 sm:pt-4 lg:pt-6">${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${profileRisk.toFixed(5)} %</span></h1>
       <h1 class="text-lg px-4 pt-4 pb-2 sm:pb-4 lg:pb-6">${profileName}'s estimated 5-year absolute risk of breast cancer compared to the US population:</h1>
     </div>
     `;
@@ -1427,10 +1440,11 @@ function plotResults(resultsContainer, results, profileName) {
         left: 50,
         right: 20
     };
-    const xMin = -0.002;
-    const xMax = Math.max(0.01, profileRisk);
-    const defaultBandwidth = 7;
-    const bandwidthScale = 1e5;
+    const xMin = 0.0;
+    const xMax = Math.max(...populationRisks);
+    const numBandwidths = 100;
+    const bandwidthValues = getBandwidthValues(numBandwidths, populationRisks);
+    const defaultBandwidth = 50;
 
     const chartContainer = select(resultsContainer);
 
@@ -1452,11 +1466,10 @@ function plotResults(resultsContainer, results, profileName) {
         .data(populationRisks)
         .xMin(xMin)
         .xMax(xMax)
-        .yMax(600)
         .vLine(profileRisk)
-        .xLabel('Absolute risk →')
-        .title('Distribution of the 5-year absolute risk of breast cancer in the US population')
-        .bandwidth(defaultBandwidth / bandwidthScale);
+        .xLabel('Absolute risk (%) →')
+        .title('Distribution of the 5-year absolute risk-percentage of breast cancer in the non-Hispanic white US population')
+        .bandwidth(bandwidthValues[defaultBandwidth - 1]);
 
     const boxPlotObject = boxPlot()
         .width(width)
@@ -1505,11 +1518,11 @@ function plotResults(resultsContainer, results, profileName) {
             .id('bandwidth')
             .labelText('Bandwidth: ')
             .min(1)
-            .max(50)
+            .max(numBandwidths)
             .step(1)
             .value(defaultBandwidth)
             .on('change', (value) => {
-                chartContainer.call(densityPlotObject.bandwidth(value / bandwidthScale));
+                chartContainer.call(densityPlotObject.bandwidth(bandwidthValues[value - 1]));
             })
     );
 
@@ -1587,6 +1600,24 @@ function plotResults(resultsContainer, results, profileName) {
     });
 }
 
+function percentageToPlainEnglish(percentage) {
+    let explanation;
+    let basePeople = 100;
+    let people;
+
+    while (true) {
+        people = Math.round((percentage / 100) * basePeople);
+        if (people > 0) break;
+        basePeople *= 10;
+    }
+
+    explanation = `According to the iCARE-Lit model, developed on non-Hispanic white individuals from the US in the ` +
+        `study, out of ${basePeople} individuals who gave similar answers to the questions above,` +
+        `${people} individuals developed breast cancer within the next 5 years.`;
+
+    return explanation;
+}
+
 icareLitApp.addEventListener('submit', (event) => {
     event.preventDefault();
     submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -1604,14 +1635,12 @@ icareLitApp.addEventListener('submit', (event) => {
     console.log(query);
     pyodideWorker.onmessage = (event) => {
         const results = event.data;
-        console.log(results);
-        results.profileRisk = 0.01;
 
         plotResults(resultsDiv, results, query.id);
         resultsDiv.scrollIntoView({behavior: 'smooth', block: 'start'});
-        submitButton.innerHTML = "Estimate risk";
-        submitButton.classList.remove("cursor-not-allowed");
-        submitButton.disabled = false;
     };
 
+    submitButton.innerHTML = "Estimate risk";
+    submitButton.classList.remove("cursor-not-allowed");
+    submitButton.disabled = false;
 });
