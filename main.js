@@ -2,7 +2,7 @@ import './style.css'
 import roseIcon from './rose.svg'
 import githubIcon from './github.svg'
 import {select} from 'd3';
-import {slider, densityPlot, boxPlot, beeswarmPlot} from './plots';
+import {slider, densityPlot, boxPlot, beeswarmPlot, populationPrevalencePlot} from './plots';
 
 
 const icareLitApp = document.querySelector('#app');
@@ -807,7 +807,7 @@ icareLitApp.innerHTML = `
         <div class="w-full border-t border-gray-300 mx-4 sm:mx-6 lg:mx-8"></div>
       </div>
       <div class="relative flex justify-center">
-        <span class="bg-white px-2 text-sm text-gray-500">iCARE-Lit results</span>
+        <span class="bg-white px-2 text-lg text-gray-500">iCARE-Lit results</span>
       </div>
     </div>
   </div>
@@ -1424,7 +1424,7 @@ function getBandwidthValues(numBandwidths, data) {
 function generateTable(headers, data, targetDiv) {
     targetDiv.innerHTML = '';
     const tableWrapper = document.createElement('div');
-    tableWrapper.className = 'relative overflow-x-auto shadow-md sm:rounded-lg my-4';
+    tableWrapper.className = 'relative overflow-x-auto shadow-md sm:rounded-lg my-4 w-[75%]';
 
     const table = document.createElement('table');
     table.className = 'w-full text-sm text-left text-gray-500';
@@ -1559,6 +1559,18 @@ function createReadableProfile(profile) {
     return sortedReadableProfile;
 }
 
+function percentageInPlainEnglish(percentage, basePeople) {
+  let people;
+
+  while (true) {
+    people = Math.round((percentage / 100) * basePeople);
+    if (people > 0) break;
+    basePeople *= 10;
+  }
+
+  return `out of ${basePeople} people, about ${people} people`;
+}
+
 function plotResults(resultsContainer, results, query) {
     const profileName = query.id;
     const populationRisks = (results.reference_risks[0].population_risks).map(risk => risk * 100.0);
@@ -1575,19 +1587,48 @@ function plotResults(resultsContainer, results, query) {
     resultsContainer.appendChild(profileRiskResults);
 
     const profileRiskTitle = document.createElement('h1');
-    profileRiskTitle.className = 'text-lg font-bold text-center px-4';
+    profileRiskTitle.className = 'text-xl font-bold text-center py-4';
     profileRiskTitle.innerHTML = `${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${profileRisk.toFixed(precision)} %</span>`;
     profileRiskResults.appendChild(profileRiskTitle);
 
+    const populationPrevalenceChartContainer = document.createElement('div');
+    const populationPrevalenceD3ChartContainer = select(populationPrevalenceChartContainer)
+        .attr('class', 'flex justify-center w-full pr-10 py-4');
+    populationPrevalenceD3ChartContainer.call(
+        populationPrevalencePlot()
+            .width(0.4 * resultsContainer.clientWidth)
+            .height(0.32 * resultsContainer.clientWidth)
+            .prevalence(profileRisk)
+            .colorCase('orange')
+            .colorControl('maroon')
+            .margin({top: 5, right: 5, bottom: 5, left: 5})
+    );
+    profileRiskResults.appendChild(populationPrevalenceChartContainer);
+
+    const profileRiskDescription = document.createElement('p');
+    profileRiskDescription.className = 'text-md';
+    profileRiskDescription.innerText = `
+    In a population of disease-free, non-Hispanic white women, in the US, with an identical risk factor profile as the one provided above for ${profileName}, ${profileRisk.toFixed(precision)}% of them are expected to develop breast cancer over the next 5 years. In other words, ${percentageInPlainEnglish(profileRisk, 100)} are expected to develop breast cancer over the next 5 years.
+    `;
+    profileRiskResults.appendChild(profileRiskDescription);
+
+    const riskFactorsDescription = document.createElement('p');
+    riskFactorsDescription.className = 'text-md';
+    riskFactorsDescription.innerText = `
+    The risk is estimated based on the risk factors provided by the user. The provided values were processed, as shown below, to run the iCARE-Lit model. The rows highlighted in red are used by iCARE-Lit for its calculations but were not provided by the user. For a more accurate risk estimation, please provide the missing risk factors.
+    `;
+    profileRiskResults.appendChild(riskFactorsDescription);
+
     const tableWrapper = document.createElement('div');
+    tableWrapper.className = 'flex justify-center w-full';
     generateTable(['Risk factor', 'Value'], createReadableProfile(query), tableWrapper);
     profileRiskResults.appendChild(tableWrapper);
 
-    // resultsContainer.innerHTML = `
-    // <div>
-    //   <h1 class="text-lg px-4 pt-4 pb-2 sm:pb-4 lg:pb-6">${profileName}'s estimated 5-year absolute risk of breast cancer compared to the US population:</h1>
-    // </div>
-    // `;
+    // Juxtapose with the population risk
+    const populationRiskTitle = document.createElement('h1');
+    populationRiskTitle.className = 'text-xl font-bold text-center py-4 sm:border-t';
+    populationRiskTitle.innerHTML = `${profileName}'s estimated 5-year absolute risk of breast cancer compared to the non-Hispanic white US population</span>`;
+    profileRiskResults.appendChild(populationRiskTitle);
 
     const densityPlotHeight = 300;
     const boxPlotHeight = 100;
@@ -1603,10 +1644,11 @@ function plotResults(resultsContainer, results, query) {
     const bandwidthValues = getBandwidthValues(numBandwidths, populationRisks);
     const defaultBandwidth = 50;
 
-    const chartContainer = select(resultsContainer)
+    const chartContainer = document.createElement('div');
+    const chartContainerD3 = select(chartContainer)
         .attr('class', 'pr-10 py-4');
 
-    const sliderContainer = chartContainer
+    const sliderContainer = chartContainerD3
         .append('div')
         .attr('class', 'slider-container');
 
@@ -1665,9 +1707,9 @@ function plotResults(resultsContainer, results, query) {
         .plotPadding(7)
         .removeAxis(true);
 
-    chartContainer.call(densityPlotObject);
-    chartContainer.call(boxPlotObject);
-    chartContainer.call(beeswarmPlotObject);
+    chartContainerD3.call(densityPlotObject);
+    chartContainerD3.call(boxPlotObject);
+    chartContainerD3.call(beeswarmPlotObject);
 
     sliderContainer.call(
         slider()
@@ -1678,11 +1720,13 @@ function plotResults(resultsContainer, results, query) {
             .step(1)
             .value(defaultBandwidth)
             .on('change', (value) => {
-                chartContainer.call(densityPlotObject.bandwidth(bandwidthValues[value - 1]));
+                chartContainerD3.call(densityPlotObject.bandwidth(bandwidthValues[value - 1]));
             })
     );
 
-    const downloadButtonsContainer = chartContainer
+    resultsContainer.appendChild(chartContainer);
+
+    const downloadButtonsContainer = chartContainerD3
         .append('div')
         .attr('class', 'flex flex-row justify-center items-center mt-4');
 
@@ -1697,7 +1741,7 @@ function plotResults(resultsContainer, results, query) {
         .text('Download results as JSON');
 
     downloadPlotButton.on('click', () => {
-        const svgElements = select(resultsContainer).selectAll('svg');
+        const svgElements = select(chartContainer).selectAll('svg');
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
 
@@ -1754,24 +1798,6 @@ function plotResults(resultsContainer, results, query) {
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
     });
-}
-
-function percentageToPlainEnglish(percentage) {
-    let explanation;
-    let basePeople = 100;
-    let people;
-
-    while (true) {
-        people = Math.round((percentage / 100) * basePeople);
-        if (people > 0) break;
-        basePeople *= 10;
-    }
-
-    explanation = `According to the iCARE-Lit model, developed on non-Hispanic white individuals from the US in the ` +
-        `study, out of ${basePeople} individuals who gave similar answers to the questions above,` +
-        `${people} individuals developed breast cancer within the next 5 years.`;
-
-    return explanation;
 }
 
 icareLitApp.addEventListener('submit', (event) => {
