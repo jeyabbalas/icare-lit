@@ -1421,6 +1421,37 @@ function getBandwidthValues(numBandwidths, data) {
     return bandwidthValues;
 }
 
+function quantile(arr, p) {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    throw new Error('Input must be a non-empty array of numbers.');
+  }
+  if (typeof p !== 'number' || p < 0 || p > 1) {
+    throw new Error('Percentile must be a number between 0 and 1.');
+  }
+
+  const sortedArr = arr.slice().sort((a, b) => a - b);
+  const index = p * (sortedArr.length - 1);
+  const lowerIndex = Math.floor(index);
+  const upperIndex = Math.ceil(index);
+
+  if (lowerIndex === upperIndex) {
+    return sortedArr[index];
+  }
+
+  const weight = index - lowerIndex;
+  return sortedArr[lowerIndex] * (1 - weight) + sortedArr[upperIndex] * weight;
+}
+
+function calculateXMax(data, x) {
+    const q1 = quantile(data, 0.25);
+    const q3 = quantile(data, 0.75);
+    const iqr = q3 - q1;
+    const xMax = q3 + 1.5 * iqr;
+    const xMaxScale = 1.4;
+    const xScale = 1.5;
+    return xMax * xMaxScale > x * xScale ? xMax * xMaxScale : x * xScale;
+}
+
 function plotResults(resultsContainer, results, profileName) {
     const populationRisks = (results.reference_risks[0].population_risks).map(risk => risk * 100.0);
     const profileRisk = results.profile[0].risk_estimates * 100.0;
@@ -1441,14 +1472,13 @@ function plotResults(resultsContainer, results, profileName) {
         right: 20
     };
     const xMin = 0.0;
-    const xMax = Math.max(...populationRisks);
+    const xMax = calculateXMax(populationRisks, profileRisk);
     const numBandwidths = 100;
     const bandwidthValues = getBandwidthValues(numBandwidths, populationRisks);
     const defaultBandwidth = 50;
 
-    const chartContainer = select(resultsContainer);
-
-    chartContainer.attr('class', 'pr-10 py-4')
+    const chartContainer = select(resultsContainer)
+        .attr('class', 'pr-10 py-4');
 
     const sliderContainer = chartContainer
         .append('div')

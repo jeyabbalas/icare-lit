@@ -95,9 +95,11 @@ export function boxPlot() {
                     .style('top', (event.pageY + hoverOffsetY) + 'px');
             });
 
+        const outliersWithinXLimits = outliers.filter(d => (d < xRange[1]) && (d > xRange[0]));
+
         svg
             .selectAll('circle')
-            .data(outliers)
+            .data(outliersWithinXLimits)
             .join('circle')
             .attr('cx', (d) => x(d))
             .attr('cy', () => (height / 2 + (Math.random() * (boxWidth / 2) - (boxWidth / 4))))
