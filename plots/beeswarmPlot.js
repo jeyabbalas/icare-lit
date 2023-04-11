@@ -143,7 +143,7 @@ export function beeswarmPlot() {
                     .attr('x', radius - (boxWidth / 2) + 5)
                     .attr('y', radius + 20)
                     .attr('font-size', '12px')
-                    .text(`${markerText}: ${data[d].toFixed(5)}`);
+                    .text(`${markerText}: ${data[d].toFixed(4)} %`);
             });
 
         if (!removeAxis) {

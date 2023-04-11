@@ -65,20 +65,21 @@ export function boxPlot() {
         const tooltip = selection.selectAll('div.tooltip')
             .data([null])
             .join('div')
-            .attr('class', 'p-2 text-white rounded-md border border-white border-opacity-50 shadow-sm pointer-events-none -translate-x-[45%] -translate-y-[80%] font-sans text-xs bg-black bg-opacity-60 transition-opacity duration-200 ease-out transition-border-color duration-100 ease-out backdrop-blur-md')
+            .attr('class', 'p-2 text-white rounded-md border border-white border-opacity-50 shadow-sm pointer-events-none -translate-x-[40%] -translate-y-[75%] font-sans text-xs bg-black bg-opacity-60 transition-opacity duration-200 ease-out transition-border-color duration-100 ease-out backdrop-blur-md')
             .style('position', 'absolute')
             .style('opacity', 0);
 
         svg
             .on('mouseover', function (event) {
+                const precision = 4;
                 const message = `
-        Minimum: ${q0.toFixed(5)}<br>
-        25th percentile: ${q1.toFixed(5)}<br>
-        Median: ${q2.toFixed(5)}<br>
-        75th percentile: ${q3.toFixed(5)}<br>
-        Maximum: ${q4.toFixed(5)}<br>
-        Inter-quartile range: ${iqr.toFixed(5)}<br>
-        Mean: ${mean.toFixed(5)}
+        Minimum: ${q0.toFixed(precision)} %<br>
+        25th percentile: ${q1.toFixed(precision)} %<br>
+        Median: ${q2.toFixed(precision)} %<br>
+        75th percentile: ${q3.toFixed(precision)} %<br>
+        Maximum: ${q4.toFixed(precision)} %<br>
+        Inter-quartile range: ${iqr.toFixed(precision)} %<br>
+        Mean: ${mean.toFixed(precision)} %
         `;
                 tooltip
                     .style('opacity', 1)

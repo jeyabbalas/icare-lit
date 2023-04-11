@@ -1421,25 +1421,81 @@ function getBandwidthValues(numBandwidths, data) {
     return bandwidthValues;
 }
 
+function generateTable(headers, data, targetDiv) {
+    targetDiv.innerHTML = '';
+    const tableWrapper = document.createElement('div');
+    tableWrapper.className = 'relative overflow-x-auto shadow-md sm:rounded-lg my-4';
+
+    const table = document.createElement('table');
+    table.className = 'w-full text-sm text-left text-gray-500';
+
+    // Table header
+    const thead = document.createElement('thead');
+    thead.className = 'text-xs text-white uppercase bg-slate-900';
+    const theadRow = document.createElement('tr');
+
+    headers.forEach(header => {
+        const th = document.createElement('th');
+        th.scope = 'col';
+        th.className = 'px-6 py-3';
+        th.textContent = header;
+        theadRow.appendChild(th);
+    });
+
+    thead.appendChild(theadRow);
+    table.appendChild(thead);
+
+    // Table body
+    const tbody = document.createElement('tbody');
+
+    for (const key in data) {
+        const tr = document.createElement('tr');
+
+        if (data[key] === undefined) {
+            tr.className = 'bg-red-50 border-b hover:bg-red-100';
+        } else {
+            tr.className = 'bg-white border-b hover:bg-slate-50';
+        }
+
+        const th = document.createElement('th');
+        th.scope = 'row';
+        th.className = 'px-4 py-2 font-medium text-gray-900 whitespace-nowrap';
+        th.textContent = key;
+        tr.appendChild(th);
+
+        const td = document.createElement('td');
+        td.className = 'px-4 py-2';
+        td.textContent = data[key];
+        tr.appendChild(td);
+
+        tbody.appendChild(tr);
+    }
+
+    table.appendChild(tbody);
+    tableWrapper.appendChild(table);
+    targetDiv.appendChild(tableWrapper);
+}
+
+
 function quantile(arr, p) {
-  if (!Array.isArray(arr) || arr.length === 0) {
-    throw new Error('Input must be a non-empty array of numbers.');
-  }
-  if (typeof p !== 'number' || p < 0 || p > 1) {
-    throw new Error('Percentile must be a number between 0 and 1.');
-  }
+    if (!Array.isArray(arr) || arr.length === 0) {
+        throw new Error('Input must be a non-empty array of numbers.');
+    }
+    if (typeof p !== 'number' || p < 0 || p > 1) {
+        throw new Error('Percentile must be a number between 0 and 1.');
+    }
 
-  const sortedArr = arr.slice().sort((a, b) => a - b);
-  const index = p * (sortedArr.length - 1);
-  const lowerIndex = Math.floor(index);
-  const upperIndex = Math.ceil(index);
+    const sortedArr = arr.slice().sort((a, b) => a - b);
+    const index = p * (sortedArr.length - 1);
+    const lowerIndex = Math.floor(index);
+    const upperIndex = Math.ceil(index);
 
-  if (lowerIndex === upperIndex) {
-    return sortedArr[index];
-  }
+    if (lowerIndex === upperIndex) {
+        return sortedArr[index];
+    }
 
-  const weight = index - lowerIndex;
-  return sortedArr[lowerIndex] * (1 - weight) + sortedArr[upperIndex] * weight;
+    const weight = index - lowerIndex;
+    return sortedArr[lowerIndex] * (1 - weight) + sortedArr[upperIndex] * weight;
 }
 
 function calculateXMax(data, x) {
@@ -1452,16 +1508,86 @@ function calculateXMax(data, x) {
     return xMax * xMaxScale > x * xScale ? xMax * xMaxScale : x * xScale;
 }
 
-function plotResults(resultsContainer, results, profileName) {
+function createReadableProfile(profile) {
+    const readableProfile = {};
+    const riskFactorDescriptions = {
+        'age': 'Age',
+        'age_at_menarche': 'Age at menarche (years)',
+        'age_at_menopause': 'Age at menopause (years)',
+        'parity': 'Number of children',
+        'age_first_birth': 'Age at first child birth (years)',
+        'oc_ever': 'Use of oral contraceptives',
+        'oc_current': 'Current use of oral contraceptives',
+        'hrt': 'Hormone replacement therapy use',
+        'hrt_type': 'Hormone replacement therapy type',
+        'bmi_curc': 'Body Mass Index (kg/m²)',
+        'height': 'Height (cm)',
+        'alcohol_intake': 'Alcohol intake (g/day)',
+        'bbd': 'History of benign breast disease',
+        'famhist': 'Family history of breast cancer in first degree relatives',
+    };
+
+    for (const [key, value] of Object.entries(profile)) {
+        if (key in riskFactorDescriptions) {
+            if ((key === 'famhist' && value !== undefined) || (key === 'bbd' && value !== undefined)) {
+                readableProfile[riskFactorDescriptions[key]] = value === 1 ? 'Yes' : 'No';
+            } else if (key === 'oc_ever' && value !== undefined) {
+                readableProfile[riskFactorDescriptions[key]] = value === 1 ? 'Ever' : 'Never';
+            } else if (key === 'oc_current' && value !== undefined) {
+                readableProfile[riskFactorDescriptions[key]] = value === 1 ? 'Current' : 'Former';
+            } else if (key === 'hrt' && value !== undefined) {
+                readableProfile[riskFactorDescriptions[key]] = value.charAt(0).toUpperCase() + value.slice(1);
+            } else if (key === 'age_first_birth' && profile['parity'] === '0') {
+                readableProfile[riskFactorDescriptions[key]] = 'N/A';
+            } else if (key === 'hrt_type' && value !== undefined) {
+                readableProfile[riskFactorDescriptions[key]] = value === 1 ? 'Estrogen prescription hormone only' : 'Combined estrogen plus progestin prescription hormones';
+            } else if (key === 'height' && value !== undefined) {
+                readableProfile[riskFactorDescriptions[key]] = (value * 10).toFixed(2);
+            } else {
+                readableProfile[riskFactorDescriptions[key]] = value;
+            }
+        }
+    }
+
+    const sortedReadableProfile = {};
+    Object.values(riskFactorDescriptions).forEach(key => {
+        if (key in readableProfile) {
+            sortedReadableProfile[key] = readableProfile[key];
+        }
+    });
+
+    return sortedReadableProfile;
+}
+
+function plotResults(resultsContainer, results, query) {
+    const profileName = query.id;
     const populationRisks = (results.reference_risks[0].population_risks).map(risk => risk * 100.0);
     const profileRisk = results.profile[0].risk_estimates * 100.0;
 
-    resultsContainer.innerHTML = `
-    <div>
-      <h1 class="text-lg px-4 pt-2 sm:pt-4 lg:pt-6">${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${profileRisk.toFixed(5)} %</span></h1>
-      <h1 class="text-lg px-4 pt-4 pb-2 sm:pb-4 lg:pb-6">${profileName}'s estimated 5-year absolute risk of breast cancer compared to the US population:</h1>
-    </div>
-    `;
+    const precision = 4;
+
+    resultsContainer.innerHTML = '';
+    resultsContainer.className = 'space-y-6 sm:space-y-5 w-full';
+
+    // Display profile risk
+    const profileRiskResults = document.createElement('div');
+    profileRiskResults.className = 'flex flex-col w-full';
+    resultsContainer.appendChild(profileRiskResults);
+
+    const profileRiskTitle = document.createElement('h1');
+    profileRiskTitle.className = 'text-lg font-bold text-center px-4';
+    profileRiskTitle.innerHTML = `${profileName}'s estimated 5-year absolute risk of breast cancer: <span class="border-2 border-red-500 rounded-lg px-2">${profileRisk.toFixed(precision)} %</span>`;
+    profileRiskResults.appendChild(profileRiskTitle);
+
+    const tableWrapper = document.createElement('div');
+    generateTable(['Risk factor', 'Value'], createReadableProfile(query), tableWrapper);
+    profileRiskResults.appendChild(tableWrapper);
+
+    // resultsContainer.innerHTML = `
+    // <div>
+    //   <h1 class="text-lg px-4 pt-4 pb-2 sm:pb-4 lg:pb-6">${profileName}'s estimated 5-year absolute risk of breast cancer compared to the US population:</h1>
+    // </div>
+    // `;
 
     const densityPlotHeight = 300;
     const boxPlotHeight = 100;
@@ -1661,12 +1787,10 @@ icareLitApp.addEventListener('submit', (event) => {
     const query = preprocessUserData(formData);
 
     pyodideWorker.postMessage(query);
-
-    console.log(query);
     pyodideWorker.onmessage = (event) => {
         const results = event.data;
 
-        plotResults(resultsDiv, results, query.id);
+        plotResults(resultsDiv, results, query);
         resultsDiv.scrollIntoView({behavior: 'smooth', block: 'start'});
     };
 
