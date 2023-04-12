@@ -92,9 +92,7 @@ export function beeswarmPlot() {
             .join('svg')
             .attr('class', 'beeswarm-plot')
             .attr('width', width)
-            .attr('height', height);
-
-        svg
+            .attr('height', height)
             .attr('font-family', 'sans-serif')
             .attr('font-size', fontSize);
 
@@ -126,7 +124,7 @@ export function beeswarmPlot() {
                     .attr('stroke', 'black')
                     .attr('stroke-width', strokeWidth);
 
-                const boxWidth = 7 * markerText.length + 25;
+                const boxWidth = 7 * markerText.length;
 
                 group
                     .append('rect')
@@ -143,7 +141,7 @@ export function beeswarmPlot() {
                     .attr('x', radius - (boxWidth / 2) + 5)
                     .attr('y', radius + 20)
                     .attr('font-size', '12px')
-                    .text(`${markerText}: ${data[d].toFixed(4)} %`);
+                    .text(`${markerText}: ${data[d].toFixed(1)} %`);
             });
 
         if (!removeAxis) {

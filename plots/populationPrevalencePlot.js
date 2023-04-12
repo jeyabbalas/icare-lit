@@ -13,7 +13,7 @@ export function populationPrevalencePlot() {
 
   const populationPrevalencePlot = (selection) => {
     const gridSize = 10;
-    const legendWidth = width / 4.1667;
+    const legendWidth = width / 3.1;
     const plotWidth = width - legendWidth;
     const cellSize = (plotWidth - margin.left - margin.right) / gridSize;
     const legendRectSize = cellSize / 2;

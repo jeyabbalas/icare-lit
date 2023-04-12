@@ -109,7 +109,7 @@ icareLitApp.innerHTML = `
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
                 <label for="race-ethnicity" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Which race/ethnicity group do you most closely associate with?</label>
-                <p class="text-sm text-gray-500"><span class="font-medium">Note</span>: The current version of the model is developed for <em>non-hispanic white</em> populations only. Future versions will be developed for other populations.</p>
+                <p class="text-sm text-gray-500"><span class="font-medium">Note</span>: The current version of the model is developed for <em>non-Hispanic, white</em> populations only. Future versions will be developed for other populations.</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <select id="race-ethnicity" name="race-ethnicity" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:max-w-xs sm:text-sm" required>
@@ -1572,15 +1572,11 @@ function hasUndefinedValues(obj) {
 
 
 function percentageInPlainEnglish(percentage, basePeople) {
-  let people;
+  let people = Math.round((percentage / 100) * basePeople);
+  const article = people === 1 ? 'is' : 'are';
+  const peoplePlural = people === 1 ? 'person' : 'people';
 
-  while (true) {
-    people = Math.round((percentage / 100) * basePeople);
-    if (people > 0) break;
-    basePeople *= 10;
-  }
-
-  return `out of ${basePeople} people with identical risk factor profiles, about ${people} people`;
+  return `out of ${basePeople} people with identical risk factor profiles, about ${people} ${peoplePlural} ${article} expected`;
 }
 
 function plotResults(resultsContainer, results, query) {
@@ -1588,7 +1584,7 @@ function plotResults(resultsContainer, results, query) {
     const populationRisks = (results.reference_risks[0].population_risks).map(risk => risk * 100.0);
     const profileRisk = results.profile[0].risk_estimates * 100.0;
 
-    const precision = 4;
+    const precision = 1;
 
     resultsContainer.innerHTML = '';
     resultsContainer.className = 'space-y-6 sm:space-y-5 w-full';
@@ -1608,11 +1604,13 @@ function plotResults(resultsContainer, results, query) {
         .attr('class', 'flex justify-center w-full py-4');
     populationPrevalenceD3ChartContainer.call(
         populationPrevalencePlot()
-            .width(400)
+            .width(450)
             .height(350)
             .prevalence(profileRisk)
-            .colorCase('orange')
-            .colorControl('maroon')
+            .colorCase('purple')
+            .colorControl('lightgray')
+            .labelCase('Breast cancer')
+            .labelControl('No breast cancer')
             .margin({top: 5, right: 5, bottom: 5, left: 5})
     );
     profileRiskResults.appendChild(populationPrevalenceChartContainer);
@@ -1620,7 +1618,7 @@ function plotResults(resultsContainer, results, query) {
     const profileRiskDescription = document.createElement('p');
     profileRiskDescription.className = 'text-md';
     profileRiskDescription.innerText = `
-    In a population of disease-free, non-Hispanic white women in the US, with an identical risk factor profile as the one provided above for ${profileName}, ${profileRisk.toFixed(precision)}% of them are expected to develop breast cancer over the next 5 years. In other words, ${percentageInPlainEnglish(profileRisk, 100)} are expected to develop breast cancer over the next 5 years.
+    In a population of breast cancer-free, non-Hispanic, white women in the US, with an identical risk factor profile as the one provided above for ${profileName}: ${profileRisk.toFixed(precision)}% of them are expected to develop breast cancer over the next 5 years. In other words, ${percentageInPlainEnglish(profileRisk, 100)} to develop breast cancer over the next 5 years.
     `;
     profileRiskResults.appendChild(profileRiskDescription);
 
@@ -1643,7 +1641,7 @@ function plotResults(resultsContainer, results, query) {
     // Juxtapose with the population risk
     const populationRiskTitle = document.createElement('h1');
     populationRiskTitle.className = 'text-xl font-bold text-center py-4 sm:border-t';
-    populationRiskTitle.innerHTML = `${profileName}'s estimated 5-year absolute risk of breast cancer compared to the non-Hispanic white US population</span>`;
+    populationRiskTitle.innerHTML = `${profileName}'s estimated 5-year absolute risk of breast cancer compared to the non-Hispanic, white US population</span>`;
     profileRiskResults.appendChild(populationRiskTitle);
 
     const densityPlotHeight = 300;
@@ -1682,7 +1680,7 @@ function plotResults(resultsContainer, results, query) {
         .xMax(xMax)
         .vLine(profileRisk)
         .xLabel('Absolute risk (%) →')
-        .title('Distribution of the 5-year absolute risk-percentage of breast cancer in the non-Hispanic white US population')
+        .title('Distribution of the 5-year absolute risk-percentage of breast cancer in the non-Hispanic, white US population')
         .bandwidth(bandwidthValues[defaultBandwidth - 1]);
 
     const boxPlotObject = boxPlot()

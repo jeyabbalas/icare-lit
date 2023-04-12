@@ -35,9 +35,7 @@ export function boxPlot() {
             .join('svg')
             .attr('class', 'box-plot')
             .attr('width', width)
-            .attr('height', height);
-
-        svg
+            .attr('height', height)
             .attr('font-family', 'sans-serif')
             .attr('font-size', fontSize);
 
@@ -71,7 +69,7 @@ export function boxPlot() {
 
         svg
             .on('mouseover', function (event) {
-                const precision = 4;
+                const precision = 1;
                 const message = `
         Minimum: ${q0.toFixed(precision)} %<br>
         25th percentile: ${q1.toFixed(precision)} %<br>

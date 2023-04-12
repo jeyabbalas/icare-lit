@@ -55,9 +55,7 @@ export function densityPlot() {
             .join('svg')
             .attr('class', 'density-plot')
             .attr('width', width)
-            .attr('height', height);
-
-        svg
+            .attr('height', height)
             .attr('font-family', 'sans-serif')
             .attr('font-size', fontSize);
 
@@ -107,7 +105,7 @@ export function densityPlot() {
 
             for (let i = 0; i < cutoffs.length; i++) {
                 let cutoffPercentage = (((cutoffs[i] - xRange[0]) / (xRange[1] - xRange[0])) * 100.0)
-                    .toFixed(2);
+                    .toFixed(1);
 
                 if (cutoffPercentage < 0) {
                     cutoffPercentage = 0.0;
