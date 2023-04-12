@@ -1424,7 +1424,7 @@ function getBandwidthValues(numBandwidths, data) {
 function generateTable(headers, data, targetDiv) {
     targetDiv.innerHTML = '';
     const tableWrapper = document.createElement('div');
-    tableWrapper.className = 'relative overflow-x-auto shadow-md sm:rounded-lg my-4 w-[75%]';
+    tableWrapper.className = 'relative overflow-x-auto shadow-md sm:rounded-lg my-4 w-full sm:w-[75%]';
 
     const table = document.createElement('table');
     table.className = 'w-full text-sm text-left text-gray-500';
@@ -1593,11 +1593,11 @@ function plotResults(resultsContainer, results, query) {
 
     const populationPrevalenceChartContainer = document.createElement('div');
     const populationPrevalenceD3ChartContainer = select(populationPrevalenceChartContainer)
-        .attr('class', 'flex justify-center w-full pr-10 py-4');
+        .attr('class', 'flex justify-center w-full py-4');
     populationPrevalenceD3ChartContainer.call(
         populationPrevalencePlot()
-            .width(0.4 * resultsContainer.clientWidth)
-            .height(0.32 * resultsContainer.clientWidth)
+            .width(400)
+            .height(350)
             .prevalence(profileRisk)
             .colorCase('orange')
             .colorControl('maroon')
