@@ -794,7 +794,7 @@ icareLitApp.innerHTML = `
 
       <div id="form-buttons" class="py-2 sm:py-4">
         <div class="flex justify-center gap-2">
-          <button type="reset" class="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">Reset</button>
+          <button id="reset-btn" type="reset" class="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">Reset</button>
           <button id="submit-btn" type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-slate-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">Estimate risk</button>
         </div>
       </div>
@@ -1424,7 +1424,7 @@ function getBandwidthValues(numBandwidths, data) {
 function generateTable(headers, data, targetDiv) {
     targetDiv.innerHTML = '';
     const tableWrapper = document.createElement('div');
-    tableWrapper.className = 'relative overflow-x-auto shadow-md sm:rounded-lg my-4 w-full sm:w-[75%]';
+    tableWrapper.className = 'relative overflow-x-auto shadow-md sm:rounded-lg my-4 w-full sm:w-[50%]';
 
     const table = document.createElement('table');
     table.className = 'w-full text-sm text-left text-gray-500';
@@ -1539,6 +1539,8 @@ function createReadableProfile(profile) {
                 readableProfile[riskFactorDescriptions[key]] = value.charAt(0).toUpperCase() + value.slice(1);
             } else if (key === 'age_first_birth' && profile['parity'] === '0') {
                 readableProfile[riskFactorDescriptions[key]] = 'N/A';
+            } else if (key === 'hrt_type' && profile['hrt']=== 'never') {
+                readableProfile[riskFactorDescriptions[key]] = 'N/A';
             } else if (key === 'hrt_type' && value !== undefined) {
                 readableProfile[riskFactorDescriptions[key]] = value === 1 ? 'Estrogen prescription hormone only' : 'Combined estrogen plus progestin prescription hormones';
             } else if (key === 'height' && value !== undefined) {
@@ -1559,6 +1561,16 @@ function createReadableProfile(profile) {
     return sortedReadableProfile;
 }
 
+function hasUndefinedValues(obj) {
+  for (let prop in obj) {
+    if (obj.hasOwnProperty(prop) && typeof obj[prop] === 'undefined') {
+      return true;
+    }
+  }
+  return false;
+}
+
+
 function percentageInPlainEnglish(percentage, basePeople) {
   let people;
 
@@ -1568,7 +1580,7 @@ function percentageInPlainEnglish(percentage, basePeople) {
     basePeople *= 10;
   }
 
-  return `out of ${basePeople} people, about ${people} people`;
+  return `out of ${basePeople} people with identical risk factor profiles, about ${people} people`;
 }
 
 function plotResults(resultsContainer, results, query) {
@@ -1608,20 +1620,24 @@ function plotResults(resultsContainer, results, query) {
     const profileRiskDescription = document.createElement('p');
     profileRiskDescription.className = 'text-md';
     profileRiskDescription.innerText = `
-    In a population of disease-free, non-Hispanic white women, in the US, with an identical risk factor profile as the one provided above for ${profileName}, ${profileRisk.toFixed(precision)}% of them are expected to develop breast cancer over the next 5 years. In other words, ${percentageInPlainEnglish(profileRisk, 100)} are expected to develop breast cancer over the next 5 years.
+    In a population of disease-free, non-Hispanic white women in the US, with an identical risk factor profile as the one provided above for ${profileName}, ${profileRisk.toFixed(precision)}% of them are expected to develop breast cancer over the next 5 years. In other words, ${percentageInPlainEnglish(profileRisk, 100)} are expected to develop breast cancer over the next 5 years.
     `;
     profileRiskResults.appendChild(profileRiskDescription);
 
+    const readableProfile = createReadableProfile(query);
     const riskFactorsDescription = document.createElement('p');
     riskFactorsDescription.className = 'text-md';
-    riskFactorsDescription.innerText = `
-    The risk is estimated based on the risk factors provided by the user. The provided values were processed, as shown below, to run the iCARE-Lit model. The rows highlighted in red are used by iCARE-Lit for its calculations but were not provided by the user. For a more accurate risk estimation, please provide the missing risk factors.
-    `;
+    let riskFactorsDescriptionText = `
+    The risk is estimated based on the risk factors provided by the user. The provided values were processed, as shown below, to run the iCARE-Lit model.`;
+    if (hasUndefinedValues(readableProfile)) {
+        riskFactorsDescriptionText += ' The rows highlighted in red are used by iCARE-Lit for its calculations but were not provided by the user. For a more accurate risk estimation, please provide the missing risk factors.';
+    }
+    riskFactorsDescription.innerText = riskFactorsDescriptionText;
     profileRiskResults.appendChild(riskFactorsDescription);
 
     const tableWrapper = document.createElement('div');
     tableWrapper.className = 'flex justify-center w-full';
-    generateTable(['Risk factor', 'Value'], createReadableProfile(query), tableWrapper);
+    generateTable(['Risk factor', 'Value'], readableProfile, tableWrapper);
     profileRiskResults.appendChild(tableWrapper);
 
     // Juxtapose with the population risk
@@ -1823,4 +1839,8 @@ icareLitApp.addEventListener('submit', (event) => {
     submitButton.innerHTML = "Estimate risk";
     submitButton.classList.remove("cursor-not-allowed");
     submitButton.disabled = false;
+});
+
+icareLitApp.addEventListener('reset', (event) => {
+    document.getElementById('form-questionnaire').scrollIntoView();
 });
