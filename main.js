@@ -1832,13 +1832,13 @@ icareLitApp.addEventListener('submit', (event) => {
 
         plotResults(resultsDiv, results, query);
         resultsDiv.scrollIntoView({behavior: 'smooth', block: 'start'});
-    };
 
-    submitButton.innerHTML = "Estimate risk";
-    submitButton.classList.remove("cursor-not-allowed");
-    submitButton.disabled = false;
+        submitButton.innerHTML = "Estimate risk";
+        submitButton.classList.remove("cursor-not-allowed");
+        submitButton.disabled = false;
+    };
 });
 
 icareLitApp.addEventListener('reset', (event) => {
-    document.getElementById('form-questionnaire').scrollIntoView();
+    document.getElementById('form-questionnaire').scrollIntoView({behavior: 'smooth', block: 'start'});
 });
