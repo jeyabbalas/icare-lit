@@ -1465,7 +1465,7 @@ function generateTable(headers, data, targetDiv) {
 
         const td = document.createElement('td');
         td.className = 'px-4 py-2';
-        td.textContent = data[key];
+        td.textContent = data[key] ?? '-';
         tr.appendChild(td);
 
         tbody.appendChild(tr);
@@ -1840,5 +1840,6 @@ icareLitApp.addEventListener('submit', (event) => {
 });
 
 icareLitApp.addEventListener('reset', (event) => {
+    resultsDiv.innerHTML = '';
     document.getElementById('form-questionnaire').scrollIntoView({behavior: 'smooth', block: 'start'});
 });
