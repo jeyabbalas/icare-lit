@@ -1680,7 +1680,7 @@ function plotResults(resultsContainer, results, query) {
         .xMax(xMax)
         .vLine(profileRisk)
         .xLabel('Absolute risk (%) →')
-        .title('Distribution of the 5-year absolute risk-percentage of breast cancer in the non-Hispanic, white US population')
+        .title('Distribution of the 5-year absolute risk of breast cancer in adult women non-Hispanic, white US population.')
         .bandwidth(bandwidthValues[defaultBandwidth - 1]);
 
     const boxPlotObject = boxPlot()
