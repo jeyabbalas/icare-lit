@@ -1,9 +1,4 @@
-import {loadWasmICARE} from 'https://cdn.jsdelivr.net/gh/jeyabbalas/wasm-icare@1.1.0/dist/wasm-icare.js';
 
-
-async function loadICARE() {
-    return await loadWasmICARE();
-}
 
 async function loadICARELit(icare) {
     const iCareLitData = [
@@ -21,8 +16,12 @@ async function loadICARELit(icare) {
 
 
 (async () => {
-  self.icare = await loadICARE();
-  self.iCARELitPreloadPromise = await loadICARELit(self.icare);
+    await (async () => {
+        const wasmIcare = await import('https://cdn.jsdelivr.net/gh/jeyabbalas/wasm-icare@1.1.0/dist/wasm-icare.js');
+        self.icare = await wasmIcare.loadWasmICARE();
+    })();
+
+    self.iCARELitPreloadPromise = await loadICARELit(self.icare);
 })();
 
 
