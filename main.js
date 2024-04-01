@@ -127,33 +127,59 @@ icareLitApp.innerHTML = `
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
-                <label for="weight" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How much do you weigh (in pounds) without your clothes or shoes on?</label>
+                <label for="weight" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How much do you weigh without your clothes or shoes on?</label>
                 <p class="text-sm text-gray-500">If you are pregnant, how much did you weigh before your pregnancy?</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
                   <input type="number" name="weight" id="weight" min="0" max="500" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="weight-units">
-                  <span id="weight-units" class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">lbs.</span>
+                <select id="weight-unit" name="weight-unit" class="block rounded-r-md border-0 py-1.5 text-gray-500 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6">
+                  <option value="lbs">lbs.</option>
+                  <option value="kgs">kgs.</option>
+                </select>
                 </div>
               </div>
             </div>
             
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <div>
-                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How tall (in feet and inches) are you with your shoes off?</label>
-                <p class="text-sm text-gray-500">For example, if you are 5 feet 7 inches enter 5 in the feet box and 7 in the inches box.</p>
+                <label class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">How tall are you with your shoes off?</label>
+                <p class="text-sm text-gray-500">Please select the unit and enter your height.</p>
               </div>
               <div class="mt-1 sm:col-span-2 sm:mt-0">
                 <div class="space-y-2">
                   <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <label for="height-feet" class="sr-only">Feet portion of the height</label>
-                    <input type="number" name="height-feet" min="2" max="8" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="height-feet">
-                    <span id="height-feet" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-5 text-gray-500 sm:text-sm">feet</span>
+                    <select id="height-unit" name="height-unit" class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6">
+                      <option value="ft-in">feet/inches</option>
+                      <option value="m">meters</option>
+                      <option value="cm">centimeters</option>
+                    </select>
                   </div>
-                  <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                    <label for="height-inches" class="sr-only">Inches portion of the height</label>
-                    <input type="number" name="height-inches" min="0" max="11" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="height-inches">
-                    <span id="height-inches" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">inches</span>
+                  <div id="height-ft-in-container">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <label for="height-feet" class="sr-only">Feet portion of the height</label>
+                      <input type="number" name="height-feet" min="2" max="8" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="height-feet">
+                      <span id="height-feet" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-5 text-gray-500 sm:text-sm">feet</span>
+                    </div>
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <label for="height-inches" class="sr-only">Inches portion of the height</label>
+                      <input type="number" name="height-inches" min="0" max="11" step="1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0" aria-describedby="height-inches">
+                      <span id="height-inches" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">inches</span>
+                    </div>
+                  </div>
+                  <div id="height-m-container" class="hidden">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <label for="height-m" class="sr-only">Height in meters</label>
+                      <input type="number" name="height-m" min="0" max="3" step="0.01" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="height-m">
+                      <span id="height-m" class="inline-block w-[70px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">meters</span>
+                    </div>
+                  </div>
+                  <div id="height-cm-container" class="hidden">
+                    <div class="flex max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                      <label for="height-cm" class="sr-only">Height in centimeters</label>
+                      <input type="number" name="height-cm" min="0" max="300" step="0.1" class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6" placeholder="0.0" aria-describedby="height-cm">
+                      <span id="height-cm" class="inline-block w-[95px] inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">centimeters</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -817,6 +843,10 @@ icareLitApp.innerHTML = `
   </div>
 `
 
+const heightUnitDropdown = document.getElementById('height-unit');
+const heightFtInContainer = document.getElementById('height-ft-in-container');
+const heightMContainer = document.getElementById('height-m-container');
+const heightCmContainer = document.getElementById('height-cm-container');
 const ageAtMenopauseContainer = document.getElementById('age-menopause-container');
 const childrenContainer = document.getElementById('children-container');
 const birthsContainer = document.getElementById('births-container');
@@ -831,6 +861,22 @@ const popContainer = document.getElementById('pop-container');
 const shotsContainer = document.getElementById('shots-container');
 const submitButton = document.getElementById("submit-btn");
 const resultsDiv = document.getElementById("results");
+
+heightUnitDropdown.addEventListener('change', (event) => {
+  if (event.target.value === 'ft-in') {
+    heightFtInContainer.classList.remove('hidden');
+    heightMContainer.classList.add('hidden');
+    heightCmContainer.classList.add('hidden');
+  } else if (event.target.value === 'm') {
+    heightFtInContainer.classList.add('hidden');
+    heightMContainer.classList.remove('hidden');
+    heightCmContainer.classList.add('hidden');
+  } else if (event.target.value === 'cm') {
+    heightFtInContainer.classList.add('hidden');
+    heightMContainer.classList.add('hidden');
+    heightCmContainer.classList.remove('hidden');
+  }
+});
 
 document.getElementById('menopause-yes').addEventListener('change', (event) => {
     if (event.target.checked) {
@@ -1061,18 +1107,32 @@ document.getElementById('alcohol-type-unknown').addEventListener('change', (even
     }
 });
 
-function preprocessHeight(height_ft, height_in) {
-    if ((isNaN(height_ft) && isNaN(height_in)) || isNaN(height_ft)) {
-        return undefined;
+function preprocessHeight(heightUnit, heightFeet, heightInches, heightM, heightCm) {
+    switch (heightUnit) {
+        case 'ft-in':
+            if (isNaN(heightFeet) && isNaN(heightInches)) {
+                return undefined;
+            }
+            if (isNaN(heightInches)) {
+                heightInches = 0;
+            }
+            return ((heightFeet * 12 + heightInches) * 2.54) / 10;
+        case 'm':
+            if (isNaN(heightM)) {
+                return undefined;
+            }
+            return heightM * 100 / 10;
+        case 'cm':
+            if (isNaN(heightCm)) {
+                return undefined;
+            }
+            return heightCm / 10;
+        default:
+            return undefined;
     }
-    if (isNaN(height_in)) {
-        height_in = 0;
-    }
-    const height_cms = (height_ft * 12 + height_in) * 2.54;
-    return height_cms / 10; // per iCARE-Lit definition
 }
 
-function calculateBMI(weight_lbs, height_ft, height_in, underAgeFifty) {
+function calculateBMI(weightValue, weightUnit, heightUnit, heightFeet, heightInches, heightM, heightCm, underAgeFifty) {
     const binBMI = (bmi) => {
         if (underAgeFifty) {
             if (bmi < 18.5) {
@@ -1095,18 +1155,18 @@ function calculateBMI(weight_lbs, height_ft, height_in, underAgeFifty) {
         }
     };
 
-    if ((isNaN(height_ft) && isNaN(height_in)) || isNaN(height_ft)) {
-        return undefined;
-    }
-    if (isNaN(height_in)) {
-        height_in = 0;
-    }
-    if (isNaN(weight_lbs)) {
+    if (isNaN(weightValue) || heightUnit === undefined) {
         return undefined;
     }
 
-    const height_inches = height_ft * 12 + height_in;
-    return binBMI(weight_lbs / (height_inches * height_inches) * 703);
+    const weightKgs = weightUnit === 'lbs' ? weightValue * 0.453592 : weightValue;
+    const heightMeters = (preprocessHeight(heightUnit, heightFeet, heightInches, heightM, heightCm) * 10) / 100;
+
+    if (isNaN(heightMeters)) {
+        return undefined;
+    }
+
+    return binBMI(weightKgs / (heightMeters * heightMeters));
 }
 
 function preprocessAgeAtMenarche(ageAtMenarche) {
@@ -1379,6 +1439,9 @@ function preprocessUserData(formData) {
     processedData.id = data['name'];
     processedData.age = parseInt(data['age']);
     processedData.height = preprocessHeight(parseInt(data['height-feet']), parseInt(data['height-inches']));
+    processedData.height = preprocessHeight(
+        data['height-unit'], parseInt(data['height-feet']), parseInt(data['height-inches']),
+        parseFloat(data['height-m']), parseFloat(data['height-cm']));
     processedData.age_at_menarche = preprocessAgeAtMenarche(parseInt(data['menarche']));
     processedData.parity = preprocessParity(parseInt(data['num-pregnancies']), parseInt(data['parous']),
         parseInt(data['parity']));
@@ -1392,16 +1455,19 @@ function preprocessUserData(formData) {
     processedData.bbd = processBenignBreastDisease(parseInt(data['benign-breast-disease']));
     processedData.famhist = processFamilyHistoryBreastCancer(parseInt(data['family-history']));
     if (processedData.age >= 50) {
-        processedData.bmi_curc = calculateBMI(parseFloat(data['weight']), parseInt(data['height-feet']),
-            parseInt(data['height-inches']), false);
-        processedData.age_at_menopause = processAgeAtMenopause(parseInt(data['menopause']), parseInt(data['age-menopause']));
+        processedData.bmi_curc = calculateBMI(
+            parseFloat(data['weight']), data['weight-unit'], data['height-unit'], parseInt(data['height-feet']),
+            parseInt(data['height-inches']), parseFloat(data['height-m']), parseFloat(data['height-cm']), false);
+        processedData.age_at_menopause = processAgeAtMenopause(
+            parseInt(data['menopause']), parseInt(data['age-menopause']));
         processedData.hrt = processHormoneTreatmentUse(parseInt(data['hormone-treatment']),
             parseInt(data['hormone-treatment-current']));
         processedData.hrt_type = preprocessHormoneTreatmentType(parseInt(data['hormone-treatment']),
             parseInt(data['hormone-treatment-current']), parseInt(data['hormone-treatment-type']));
     } else {
-        processedData.bmi_curc = calculateBMI(parseFloat(data['weight']), parseInt(data['height-feet']),
-            parseInt(data['height-inches']), true);
+        processedData.bmi_curc = calculateBMI(
+            parseFloat(data['weight']), data['weight-unit'], data['height-unit'], parseInt(data['height-feet']),
+            parseInt(data['height-inches']), parseFloat(data['height-m']), parseFloat(data['height-cm']), true);
         processedData.oc_current = processHormoneContraceptiveCurrentUse(parseInt(data['hormonal-contraceptive-current']));
     }
 
